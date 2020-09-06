@@ -7,7 +7,8 @@ Grupo da disciplina de Web. Projeto de publicações de artigos científicos.
 - JEAN CAMELO SILVA
 
 #Description
-  Pensando na falta de visibilidade que se encontra os projetos de pesquisas e
+
+Pensando na falta de visibilidade que se encontra os projetos de pesquisas e
 trabalhos das instituições públicas e privadas da cidade de Crateús, o nosso projeto
 visa a criação de uma plataforma onde poderá ser publicado e acessado os
 diferentes tipos de trabalhos desenvolvidos nos campus da cidade.
