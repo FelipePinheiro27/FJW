@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="exibir_entidade/CSS/style_exibir_entidade.css">
+    <link rel="stylesheet" href="bootstrap/bootstrap.min.css">
+    <script src="bootstrap/jquery-3.5.1.slim.min.js"></script>
+    <script src="bootstrap/popper.min.js"></script>
+    <script src="bootstrap/bootstrap.min.js"></script>
+    <script src="exibir_entidade/JS/functions_exibir_entidade.js"></script>
+</head>
+<body onLoad="mostrarEntidades()">
+    <div >
+        <table class="container text-center table-bordered">
+            <thead>
+                <tr>
+                    <th style="text-align:center; width: 100px;">Autor</th>
+                    <th style="width: 200px; text-align: center">Projeto</th>
+                    <th style="width: 200px; text-align: center">Instituição</th>
+                    <th style="width: 270px; text-align: center">Mais Informações</th>
+                </tr>
+            </thead>
+            <tbody id="tbodyP">
+            </tbody>
+        </table>
+        <p id="aux"></p>
+        <template id="template1">
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td style="max-width: 200px;"> <button>+</button></td>
+            </tr>
+        </template>
+    </div>
+</body>
+<script src="exibir_entidade/JS/functions_exibir_entidade.js"></script>
+</html>
