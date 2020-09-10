@@ -15,17 +15,22 @@
 </head>
 
 <body class="xx">
-    <div class="faixa">
-        <div class="home">
-        <img src="imagens/Home.png" alt="" srcset="" class="rounded-circle"
-        onclick="location.href = 'index.html'">
-        </div>
+    <div id="navegação">
+        <ul class="nav nav-tabs" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" data-toggle="tab" onclick="location.href = 'index.html'">Início</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="tab" onclick="location.href = 'cadastro_entidade.html'">Cadastrar Projeto</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="tab" onclick="location.href = 'exibir_entidades.html'">Descobrir Projetos</a>
+            </li>
+          </ul>
     </div>
-
     <div class="cabecalho">
         <h2>Cadastros de projetos</h2>
     </div>
-
     <div class="container">
         <form action="/action_page.php">
             <div class="form-group">
@@ -35,6 +40,14 @@
             <div class="form-group">
                 <label>Descrição:</label>
                 <textarea class="form-control" id="desc"></textarea>
+            </div>
+            <div class="form-group">
+                <label>Palavras Chaves  :</label>
+                <textarea class="form-control" id="pChaves"></textarea>
+            </div>
+            <div class="form-group">
+                <label>Tipo de Projeto (ex:conclusão de curso, relatório de estágio):</label>
+                <textarea class="form-control" id="tipoP"></textarea>
             </div>
             <div class="form-group">
                 <input type="file" id="ficheiro">

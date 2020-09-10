@@ -1,30 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Mais Informação</title>
-        <link rel="stylesheet" href="css/mais_informacao.css">
 
-        <script src="bootstrap/jquery-3.5.1.slim.min.js"></script>
-        <script src="bootstrap/popper.min.js"></script>
-        <script src="bootstrap/bootstrap.min.js"></script>
-        <script src="exibir_entidade/JS/functions_exibir_entidade.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site WEB</title>
+    <link rel="stylesheet" href="mais_informacao.css">
+    <link rel="stylesheet" href="bootstrap/bootstrap.min.css">
+    <script src="bootstrap/jquery-3.5.1.slim.min.js"></script>
+    <script src="bootstrap/popper.min.js"></script>
+    <script src="bootstrap/bootstrap.min.js"></script>
 
-    </head>
-    <body>
-        <div class="card">
-            <div class="card_top">
-                <h2 class="title">Projeto</h2>
-            </div>
-            <div class="card_campos">
-                <div id="text">
-                    <b>Título : Armazenamento na nuvem e seus desafios <b> <br>
-                    <b>Autor : Willian Oliveira<b> <br>
-                    <b>Descrição : Armazenar dados de forma segura e integra.<b> <br>
-                    <b>Corpo : <b> 
-                    <button>Arquivo Anexado</button>
-                </div>
-            </div> 
-    </body> 
+</head>
+
+<body class="xx">
+    <div id="navegacao">
+        <ul class="nav nav-tabs" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" data-toggle="tab" onclick="location.href = 'index.html'">Início</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" onclick="location.href = 'cadastro_entidade.html'">Cadastrar
+                    Projeto</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" onclick="location.href = 'exibir_entidades.html'">Descobrir
+                    Projetos</a>
+            </li>
+        </ul>
+    </div>
+    <div class="info card">
+        <label class="info_titulo">Dados do Projeto</label>
+        <label class="info_dado" for="">Instituição:</label><label for="">Universidade Federal do Ceará (UFC)</label>
+        <label class="info_dado" for="">Curso:</label><label for="">Ciências Biológias</label>
+        <label class="info_dado" for="">Título:</label><label for="">EFEITO E SEGURANÇA DE 6,7-DIMETOXI-3-NITROCUMARINA
+            (COMPOSTO SEMISSINTÉTICO MODIFICADO A PARTIR DA 6,7-DIMETOXICUMARINA OBTIDA DO CAULE DE Platymiscium
+            floribundum Vog) EM UM MODELO DE PERIODONTITE EM RATAS</label>
+        <label class="info_dado" for="">Autor:</label><label for="">ANA LARISSA DE QUEIROZ FRANCA</label>
+        <label class="info_dado" for="">Descrição:</label><label for="">A Periodontite é uma inflamação dos tecidos de
+            suporte dos dentes com perda progressiva da inserção e destruição óssea como resultado da resposta do
+            hospedeiro à presença de uma microbiota disbiótica. Assim, este estudo teve como objetivo avaliar a
+            atividade anti-reabsortiva e a segurança da 6,7-dimetoxi-3-nitrocumarina, modificada a partir de
+            6,7-dimetoxicumarina obtida do caule de Platymiscium floribundum Vog na periodontite induzida por ligadura
+            em ratas e o envolvimento da via HO-1 em seu mecanismo de ação. A periodontite foi induzida pela colocação
+            de uma ligadura de fio de náilon estéril (3.0) ao redor dos segundos molares superiores esquerdos. As ratas
+            receberam (gavagem oral) uma vez por dia, durante 11 dias 6,7-dimetoxi-3-nitrocumarina (0,01, 0,1 ou 1 mg /
+            kg) ou veículo (solução salina a 0,9% + etanol a 0,1%). 6,7-dimetoxi-3-nitrocumarina (0,1 ou 1 mg / kg)
+            reduziu a perda óssea alveolar (1,88 ± 0,15; 1,05 ± 0,24, respectivamente), quando comparada ao grupo
+            tratado com veículo (3,05 ± 0,30). 6,7-dimetoxi-3-nitrocumarina (1 mg / kg) reduziu os níveis de RNAm de
+            TNF-ɑ (2,33 ± 0,56) e IL-1β (19,87 ± 2,9), enquanto aumentou os níveis de RNAm de HO-1 (43,40 ± 1,05) e
+            atividade da catalase (46,42 ± 4,59), quando comparado ao grupo tratado com veículo (46,29 ± 8,43; 37,83 ±
+            4,38; 1,58 ± 0,11; 8,93 ± 1,86, respectivamente). Não foram observadas diferenças estatísticas (P> 0,05) nos
+            parâmetros bioquímicos séricos (creatinina, FAT, ALT, AST) entre os grupos. 6,7-dimetoxi-3-nitrocumarina
+            diminuiu a perda óssea inflamatória na periodontite induzida por ligaduras em ratas e a ativação da via HO-1
+            contribui pelo menos parcialmente para seus efeitos protetores.</label>
+        <label class="info_dado" for="">Palavras-Chave:</label><label
+            for="">periodontite;6,7-dimetoxi-3-nitrocumarina;HO-1;TNF-ɑ;IL-1β</label>
+        <label class="info_dado" for="">Anexo:</label><label id="anexo" for="">2020_dis_alqfrança.pdf</label>
+    </div>
+</body>
+
 </html>

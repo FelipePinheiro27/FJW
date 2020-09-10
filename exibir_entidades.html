@@ -12,12 +12,25 @@
     <script src="exibir_entidade/JS/functions_exibir_entidade.js"></script>
 </head>
 <body onLoad="mostrarEntidades()">
+    <div id="navegação">
+        <ul class="nav nav-tabs" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" data-toggle="tab" onclick="location.href = 'index.html'">Início</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="tab" onclick="location.href = 'cadastro_entidade.html'">Cadastrar Projeto</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="tab" onclick="location.href = 'exibir_entidades.html'">Descobrir Projetos</a>
+            </li>
+          </ul>
+    </div>
     <div >
         <table class="container text-center table-bordered">
             <thead>
                 <tr>
-                    <th style="text-align:center; width: 100px;">Autor</th>
-                    <th style="width: 200px; text-align: center">Projeto</th>
+                    <th style="text-align:center; width: 100px;">Tipo</th>
+                    <th style="width: 200px; text-align: center">Autor</th>
                     <th style="width: 200px; text-align: center">Instituição</th>
                     <th style="width: 270px; text-align: center">Mais Informações</th>
                 </tr>
@@ -31,7 +44,7 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td style="max-width: 200px;"> <button>+</button></td>
+                <td style="max-width: 200px;"> <button onclick="location.href = 'mais_informacao.html'">+</button></td>
             </tr>
         </template>
     </div>

@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exibir</title>
+    <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="bootstrap/bootstrap.min.css">
     <script src="bootstrap/jquery-3.5.1.slim.min.js"></script>
     <script src="bootstrap/popper.min.js"></script>
@@ -12,12 +13,20 @@
 </head>
 
 <body>
-    <div class="btn-index">
-        <button type="button" class="btn btn-info" onclick="location.href = 'exibir_entidades.html'">Todos os
-            Projetos</button>
-        <button class="btn btn-info" onclick="location.href = 'cadastro_entidade.html'" type="submit">Cadastrar um
-            Projeto</button>
+    <div id="navegação">
+        <ul class="nav nav-tabs" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" data-toggle="tab" onclick="location.href = 'index.html'">Início</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="tab" onclick="location.href = 'cadastro_entidade.html'">Cadastrar Projeto</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="tab" onclick="location.href = 'exibir_entidades.html'">Descobrir Projetos</a>
+            </li>
+          </ul>
     </div>
+
 </body>
 
 </html>

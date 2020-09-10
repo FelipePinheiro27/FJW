@@ -14,37 +14,29 @@
     margin-left: 40px;
     margin-top: 5px;
 }
-
 .home img{
  cursor: pointer;
 }
-
-
 .cabecalho{
     margin-top: 30px;
     margin-left: 540px;
     color: crimson;
 }
-
 .container{
     margin-top: 50px;
     height: 600px;
     background-color: white;
 }
-
 .container label{
     margin-top: 40px;
 }
-
 #desc{
     height: 80px;
     max-height: 140px;
 }
-
 #ficheiro{
     margin-top: 40px;
 }
-
 .submit{
     float: right;
     margin-top: 40px;

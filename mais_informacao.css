@@ -1,25 +1,36 @@
-body{
-    background-color: #f0f0f0;
-    font-family: sans-serif;
-}
 .card{
-    margin-left: 10%;
-    margin-right: 10%;
-}
-
-.card{
-    box-shadow: 10px 10px 10px #ccc;
+    box-shadow: 1px 1px 5px #ccc;
     background-color: white;
-    padding: 50px;
+    padding: 30px;
     border: 5px;
-
-    margin-top: 10%;
 }
-.card_top{
-    text-align: center;
+.info{
+    width: 80%;
+    margin: auto;
 }
-
-.title
-{
+label{
+    display: block;
+    text-align: justify;
+}
+.info_dado{
+    padding-top: 7px;
+    font-weight: bold;
+    font-size: 16px;
+    font-family: arial, sans-serif;
     color: black;
+}
+.info_titulo{
+    padding-top: 7px;
+    font-weight: bold;
+    font-size: 20px;
+    font-family: arial, sans-serif;
+    color: black
+}
+#anexo{
+    padding-top: 7px;
+    font-weight: bold;
+    font-size: 16px;
+    font-family: arial, sans-serif;
+    color: black;
+    text-decoration: underline
 }
