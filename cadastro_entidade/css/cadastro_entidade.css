@@ -3,7 +3,7 @@
 }
 
 .faixa{
-    width: 1366px;
+    width: 100%;
     height: 50px;
     background-color: black;
 }
@@ -14,6 +14,11 @@
     margin-left: 40px;
     margin-top: 5px;
 }
+
+.home img{
+ cursor: pointer;
+}
+
 
 .cabecalho{
     margin-top: 30px;
