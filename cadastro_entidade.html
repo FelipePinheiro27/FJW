@@ -43,11 +43,18 @@
             </div>
             <div class="form-group">
                 <label>Palavras Chaves  :</label>
-                <textarea class="form-control" id="pChaves"></textarea>
+                <input type="text" class="form-control" id="pChaves">
             </div>
             <div class="form-group">
-                <label>Tipo de Projeto (ex:conclusão de curso, relatório de estágio):</label>
-                <textarea class="form-control" id="tipoP"></textarea>
+                <label>Tipo de Projeto:</label>
+                <select name="projetos" id="opc" class="form-control">
+                    <option value="ext">Projeto de Extensão</option>
+                    <option value="TCC">TCC</option>
+                    <option value="BIA">BIA</option>
+                    <option value="BIA">NPDS</option>
+                    <option value="BIA">PIBID</option>
+                    <option value="BIA">PIBIC</option>
+                 </select>
             </div>
             <div class="form-group">
                 <input type="file" id="ficheiro">

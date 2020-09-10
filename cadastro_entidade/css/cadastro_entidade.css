@@ -24,7 +24,8 @@
 }
 .container{
     margin-top: 50px;
-    height: 600px;
+    margin-bottom: 50px;
+    height: 800px;
     background-color: white;
 }
 .container label{
@@ -40,4 +41,8 @@
 .submit{
     float: right;
     margin-top: 40px;
+}
+
+#opc{
+    width: 20%;
 }
