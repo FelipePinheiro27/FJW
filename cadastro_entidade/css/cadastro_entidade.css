@@ -2,18 +2,6 @@
     background-color: #f0f0f0;
 }
 
-.faixa{
-    width: 100%;
-    height: 50px;
-    background-color: black;
-}
-
-.faixa img{
-    width: 40px;
-    height: 40px;
-    margin-left: 40px;
-    margin-top: 5px;
-}
 .home img{
  cursor: pointer;
 }
@@ -22,6 +10,7 @@
     margin-left: 540px;
     color: crimson;
 }
+
 .container{
     margin-top: 50px;
     margin-bottom: 50px;

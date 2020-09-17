@@ -3,8 +3,6 @@ function buttonClear(){
     document.getElementById("desc").value = "";
     document.getElementById("ficheiro").value = null;
     document.getElementById("pChaves").value = "";
-
-
 }
 
 function adicionar(){
