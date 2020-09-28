@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site WEB</title>
+    <link rel="stylesheet" href="CSS/cadastro_entidade.css">
+    <script src="JS/jquery-3.5.1.slim.min.js"></script>
+    <link rel="stylesheet" href="CSS/bootstrap.min.css">
+    <script src="JS/bootstrap.min.js"></script>
+    <script src="JS/popper.min.js"></script>
+
+</head>
+
+<body class="xx">
+    <div id="Index"></div>
+    <div>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand h1 mb-0" href="index.html">Home</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSite">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSite">
+                <a class="nav-link" style="color: darkgray;" href="">Cadastrar Projeto</a>
+                <a class="nav-link" style="color: darkgray;" href="exibir_entidades.html">Visualizar Projetos</a>
+            </div>
+        </nav>
+    </div>
+    <div class="cabecalho">
+        <h2>Cadastros de projetos</h2>
+    </div>
+    <div class="container">
+        <form action="/action_page.php">
+            <div class="form-group">
+                <label for="title">Título:</label>
+                <input type="text" class="form-control" id="titulo">
+            </div>
+            <div class="form-group">
+                <label>Descrição:</label>
+                <textarea class="form-control" id="desc"></textarea>
+            </div>
+            <div class="form-group">
+                <label>Palavras Chaves  :</label>
+                <input type="text" class="form-control" id="pChaves">
+            </div>
+            <div class="form-group">
+                <label>Tipo de Projeto:</label>
+                <select name="projetos" id="opc" class="form-control">
+                    <option value="ext">Projeto de Extensão</option>
+                    <option value="TCC">TCC</option>
+                    <option value="BIA">BIA</option>
+                    <option value="BIA">NPDS</option>
+                    <option value="BIA">PIBID</option>
+                    <option value="BIA">PIBIC</option>
+                 </select>
+            </div>
+            <div class="form-group">
+                <input type="file" id="ficheiro">
+            </div>
+            <div class="submit">
+                <button type="button" class="btn btn-danger" onclick="adicionar()">Submit</button>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="CSS/style_exibir_entidade.css">
+    <script src="JS/jquery-3.5.1.slim.min.js"></script>
+    <link rel="stylesheet" href="CSS/bootstrap.min.css">
+    <script src="JS/bootstrap.min.js"></script>
+    <script src="JS/popper.min.js"></script>
+    <script src="JS/exibir_entidade.js"></script>
+</head>
+
+<body onLoad="mostrarEntidades()">
+    <div>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand h1 mb-0" href="index.html">Home</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSite">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSite">
+                <a class="nav-link" style="color: darkgray;" href="cadastro_entidade.html">Cadastrar Projeto</a>
+                <a class="nav-link" style="color: darkgray;" href="">Visualizar Projetos</a>
+            </div>
+        </nav>
+    </div>
+
+    <div>
+        <table class="container text-center table-bordered">
+            <thead>
+                <tr>
+                    <th style="text-align:center; width: 100px;">Tipo</th>
+                    <th style="width: 200px; text-align: center">Autor</th>
+                    <th style="width: 200px; text-align: center">Instituição</th>
+                    <th style="width: 270px; text-align: center">Mais Informações</th>
+                </tr>
+            </thead>
+            <tbody id="tbodyP">
+            </tbody>
+        </table>
+        <p id="aux"></p>
+        <template id="template1">
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td style="max-width: 200px;"> <button onclick="location.href = 'mais_informacao.html'">+</button></td>
+            </tr>
+        </template>
+    </div>
+</body>
+<script src="JS/functions_exibir_entidade.js"></script>
+
+</html>
