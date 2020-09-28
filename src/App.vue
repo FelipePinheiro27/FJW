@@ -7,16 +7,10 @@
       <router-link to="/Login">Login</router-link> |
       <router-link to="/Cadastro">Cadastro</router-link> |
       <router-link to="/CadastroProjeto">Cadastrar Projeto</router-link> |
-
-
-
     </div>
     <router-view/>
   </div>
 </template>
-
-
-
 
 <style>
 #app {
