@@ -5,14 +5,21 @@
       <a id="entrar" href="login.html"> Entrar</a>
       <a id="cadastrar" href="cadastro.html"> Cadastrar</a>
     </nav>
+    <!-- <router-link to="/">Home</router-link> | -->
     <div class="d-flex" id="wrapper">
       <div class="bg-dark">
         <div class="bg-dark" id="sidebar-wrapper">
           <div class="list-group list-group-flush">
-            <a href="index.html" class="list-group-item list-group-item-action bg-dark">
+            <a
+              href="index.html"
+              class="list-group-item list-group-item-action bg-dark"
+            >
               <label class="navWords" for="">Home</label>
             </a>
-            <a href="cadastro_entidade.html" class="list-group-item list-group-item-action bg-dark">
+            <a
+              href="cadastro_entidade.html"
+              class="list-group-item list-group-item-action bg-dark"
+            >
               <label class="navWords" for="">Cadastrar Projeto</label>
             </a>
             <a href="#" class="list-group-item list-group-item-action bg-dark">
@@ -38,33 +45,38 @@
       </div>
 
       <div class="text-left" id="page-content-wrapper">
-        <h3>
+        <h3 id="title">
           Pesquise por trabalhos e projetos desenvolvidos nas faculdades
           públicas de Crateús
         </h3>
         <div class="form-group">
-          <input
-            :src="imageUECE"
-            @click="teste"
-            class="form-control d-inline UECE"
-            type="Image"
-            name="UECE"
-            
-          />
-          <input
-            @click="teste"
-            class="form-control d-inline UFC"
-            type="Image"
-            name="UFC"
-            :src="imageUFC"
-          />
-          <input
-            @click="teste"
-            class="form-control d-inline IFCE"
-            type="Image"
-            name="IFCE"
-            :src="imageIFCE"
-          />
+          <div class="logos">
+            <input
+              :src="imageUECE"
+              @click="teste"
+              class="form-control d-inline UECE"
+              type="Image"
+              name="UECE"
+            />
+          </div>
+          <div class="logos">
+            <input
+              @click="teste"
+              class="form-control d-inline UFC"
+              type="Image"
+              name="UFC"
+              :src="imageUFC"
+            />
+          </div>
+          <div class="logos">
+            <input
+              @click="teste"
+              class="form-control d-inline IFCE"
+              type="Image"
+              name="IFCE"
+              :src="imageIFCE"
+            />
+          </div>
         </div>
       </div>
     </div>
@@ -78,20 +90,14 @@ import imageUECE from "./UECE.png";
 import imageIFCE from "./IFCE.jpeg";
 import imageUFC from "./UFC.png";
 
-
-
-
- 
 export default {
-
   name: "Index",
 
   data() {
     return {
       imageUECE: imageUECE,
       imageUFC: imageUFC,
-      imageIFCE: imageIFCE
-
+      imageIFCE: imageIFCE,
     };
   },
   methods: {
@@ -104,12 +110,21 @@ export default {
 </script>
 
 <style>
-
-#entrar{
-    margin-left: 80%;
-    padding-right: 1%;
+#title{
+  color: black;
 }
-#logo, #entrar, #cadastrar{
+.logos {
+  width: 30%;
+  display: inline-block
+}
+
+#entrar {
+  margin-left: 80%;
+  padding-right: 1%;
+}
+#logo,
+#entrar,
+#cadastrar {
   text-align: right;
   color: cornflowerblue;
   font-family: Arial, Helvetica, sans-serif;
