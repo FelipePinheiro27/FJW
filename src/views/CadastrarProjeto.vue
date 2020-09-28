@@ -1,12 +1,35 @@
 <template>
+
+  <!-- <div>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand h1 mb-0" href="index.html">Home</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSite">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSite">
+                <a class="nav-link" style="color: darkgray;" href="">Cadastrar Projeto</a>
+                <a class="nav-link" style="color: darkgray;" href="#">Visualizar Projetos</a>
+            </div>
+        </nav>
+    </div> -->
+
   <div>
-    <nav class="navbar navbar-expand-lg bg-dark">
-      <a class="mb-1" id="logo" href="index.html">Plataforma DivPro</a>
-      <a id="entrar" href="login.html"> Entrar</a>
-      <a id="cadastrar" href="cadastro.html"> Cadastrar</a>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand h3 mb-0" href="index.html" id="home"><h3>DivPro</h3></a>
+      <div class="collapse navbar-collapse" id="navbarSite">
+                <a class="nav-link" style="color: white" href="">Cadastrar Projeto</a>
+                <a class="nav-link" style="color: white;" href="#">Visualizar Projetos</a>
+                <a class="nav-link" style="color: cornflowerblue" href="#" id="first"><h6>Entrar</h6></a>
+                <a class="nav-link" style="color: cornflowerblue" href="#"><h6>Registrar</h6></a>
+          </div>
+      <!-- <a class="mb-1" id="logo" href="index.html">Plataforma DivPro</a> -->
     </nav>
+    <div class="alinhamento">
     <div class="d-flex" id="wrapper">
-      <div class="bg-dark">
+
+
+      <!-- <div class="bg-dark">
         <div class="bg-dark" id="sidebar-wrapper">
           <div class="list-group list-group-flush">
             <a
@@ -41,10 +64,10 @@
             </a>
           </div>
         </div>
-      </div>
+      </div> -->
 
       <div class=" allInfo text-left" id="page-content-wrapper">
-        <div class="container bg-dark putInfo">
+        <div class="xx">
           <div>
             <h2 class="text-center top">Cadastrar Projeto</h2>
           </div>
@@ -88,6 +111,7 @@
         </div>
       </div>
     </div>
+    </div>
   </div>
 </template>
 
@@ -96,6 +120,15 @@ export default {};
 </script>
 
 <style>
+
+#first{
+  margin-left: 55%;
+}
+
+#home h3{
+  color: cornflowerblue;
+}
+
 .top {
   color:cornflowerblue;
 }
@@ -108,6 +141,18 @@ export default {};
 }
 .form-control{
     width: 90%;
+}
+
+button{
+  margin-bottom: 2%;
+}
+
+.alinhamento{
+  background-color: white;
+  margin-top: 3%;
+  margin-bottom: 3%;
+  margin-left: 5%;
+  margin-right: 5%;
 }
 /* .home img{
  cursor: pointer;
