@@ -1,10 +1,10 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
-import Index from '../views/Index.vue'
 import Login from '../views/Login.vue'
 import Cadastro from '../views/Cadastro.vue'
 import CadastroProjeto from '../views/CadastrarProjeto.vue'
+import ProcurarProjeto from '../views/ProcurarProjeto.vue'
 
 
 
@@ -14,11 +14,6 @@ const routes = [{
         path: '/',
         name: 'Home',
         component: Home
-    },
-    {
-        path: '/Index',
-        name: 'Index',
-        component: Index
     },
     {
         path: '/Login',
@@ -36,12 +31,10 @@ const routes = [{
         component: CadastroProjeto
     },
     {
-        path: '/about',
-        name: 'About',
-        component: function() {
-            return import ( /* webpackChunkName: "about" */ '../views/About.vue')
-        }
-    }
+        path: '/ProcurarProjeto',
+        name: 'ProcurarProjeto',
+        component: ProcurarProjeto
+    },
 ]
 
 const router = new VueRouter({

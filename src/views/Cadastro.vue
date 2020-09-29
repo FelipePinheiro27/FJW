@@ -1,91 +1,137 @@
 <template>
-  <form class="form_login" autocomplete="on">
-        <div class="card">
-            <div class="card_top">
-                <img id="img_login" src="Imagens/imagem_login.png" alt="">
-                <h2 class="title">DivPro</h2>
-                <p>Insira os dados pedidos para a criação de um novo usuário</p>
+  <form class="form_cadastro container" autocomplete="on">
+    <div class="container">
+      <div class="text-center">
+        <img id="img_login" src="Imagens/imagem_login.png" alt="" />
+        <h1 class="title">DivPro</h1>
+        <p>Insira seus dados para criar sua conta</p>
+      </div>
+      <div class="card_campos">
+        <label class="text_login text-center">Usuário</label
+        ><input
+          type="text"
+          id="user"
+          name="usuario"
+          placeholder="Digite seu usuário"
+          v-model="user"
+          required
+        />
+      </div>
+      <div class="card_campos">
+        <label class="text_login text-center">Senha</label
+        ><input
+          type="password"
+          id="senha"
+          name="senha"
+          placeholder="Digte sua senha"
+          v-model="senha"
+          required
+        />
+      </div>
+      <div class="card_campos">
+        <label class="text_login text-center">Instituição</label
+        ><input
+          type="password"
+          id="senha"
+          name="senha"
+          placeholder="Digite sua Instituição"
+          v-model="senha"
+          required
+        />
+      </div>
+      <div class="card_campos">
+        <label class="text_login text-center">Curso</label
+        ><input
+          type="password"
+          id="senha"
+          name="senha"
+          placeholder="Digite o seu Curso"
+          v-model="senha"
+          required
+        />
+      </div>
+      <div>
+       <div id="btn-loging">
+        <router-link to="/Login">
+          <div class="btns_login">
+            <button id="makeCad" type="submit">CADASTRAR</button>
+          </div>
+        </router-link>
+      </div>
+        <div id="btn-cadastro">
+          <router-link to="/Login">
+            <div class="btns_login">
+              <button onclick="" id="backLogin" type="submit">
+                VOLTAR PARA LOGIN
+              </button>
             </div>
-            <div class="card_campos">
-                <label>Usuário</label><input type="text" id="user" name="usuario" placeholder="Digite um nome para seu usuário" required>
-            </div>
-            <div class="card_campos">
-                <label>Senha</label><input type="password" id="senha" name="senha" placeholder="Digite uma senha para acessar sua conta" required>
-            </div>
-            <div class="card_campos">
-                <label>Instituição</label><input type="text" name="inst" id="inst" placeholder="Digite sua Instituição" required>
-            </div>
-            <div class="card_campos">
-                <label>Curso</label><input type="text" name="inst" id="inst" placeholder="Digite o seu Curso" required>
-            </div>
-            <div class="card_campos">
-                <button id="cadastrar" type="submit">CONFIMAR CADASTRO</button>
-                <button onclick="location.href = 'login.html'" id="voltar_cadastro_login" type="submit">VOLTAR PARA LOGIN</button>
-            </div>
+          </router-link>
         </div>
-    </form>
+      </div>
+    </div>
+  </form>
 </template>
 
 <script>
-export default {
-
-}
+export default {};
 </script>
 
 <style>
-body {
-  background-color: #f0f0f0;
-  font-family: sans-serif;
-}
-.form_login {
-  width: 400px;
+.form_cadastro {
+  width: 25%;
   margin: auto;
-  padding-top: 40px;
-}
-.card {
-  box-shadow: 1px 1px 5px #ccc;
-  background-color: white;
-  padding: 30px;
-  border: 5px;
-}
-.card_top {
-  text-align: center;
-}
-.card_campos {
-  margin-bottom: 10px;
+  padding-top: 3%;
+  margin-top: 4%;
 }
 .card_campos > label {
-  width: 100px;
   color: black;
-  /* display: block; */
+  display: block;
 }
 .card_campos > input {
   border-radius: 5px;
-  width: 300px;
-  height: 25px;
-  padding-left: 5px;
+  width: 90%;
+  padding-left: 5%;
 }
 .card_campos > button {
-  background-image: linear-gradient(to right, red, rgb(58, 54, 54));
+  background-color: rgb(55, 104, 196);
   width: 100%;
-  border-radius: 30px;
-  height: 35px;
+  border-radius: 30rem;
+  height: 5%;
   padding: 5px;
   color: white;
   border: 0px;
-  margin-bottom: 5px;
+  margin-bottom: 2%;
 }
-.card_campos > button:hover {
-  background-image: linear-gradient(to right, rgb(58, 54, 54), red);
-}
-
 #img_login {
+  margin-top: 5%;
   border-radius: 50px;
-  width: 100px;
+  width: 28%;
   box-shadow: 0px 0px 10px #ccc;
 }
 .title {
-  color: crimson;
+  color: cornflowerblue;
 }
-
+#cadastro {
+  margin-bottom: 10%;
+}
+.btns-login {
+  margin-top: 1%;
+}
+.btns_login {
+  margin-top: 8%;
+}
+.btns_login > button {
+  background-color: rgb(55, 104, 196);
+  width: 100%;
+  border-radius: 30rem;
+  height: 5%;
+  padding: 5px;
+  color: white;
+  border: 0px;
+  margin-bottom: 2%;
+}
+.text_login {
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
 </style>
