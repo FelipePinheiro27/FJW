@@ -86,6 +86,33 @@
               :src="imageIFCE"
             />
           </div>
+          <div class="logos">
+            <input
+              @click="teste"
+              class="form-control d-inline FPO"
+              type="Image"
+              name="FPO"
+              :src="imageFPO"
+            />
+          </div>
+          <div class="logos">
+            <input
+              @click="teste"
+              class="form-control d-inline Unopar"
+              type="Image"
+              name="Unopar"
+              :src="imageUnopar"
+            />
+          </div>
+          <div class="logos">
+            <input
+              @click="teste"
+              class="form-control d-inline IVA"
+              type="Image"
+              name="IVA"
+              :src="imageIVA"
+            />
+          </div>
         </div>
       </div>
     </div>
@@ -96,8 +123,11 @@
 ///Mudar depois para o caminho do arquivo para imagens, não sei pq não ta pegando o path relative
 //import imageUECE from "./public/Imagens/UECE.png";
 import imageUECE from "./UECE.png";
-import imageIFCE from "./IFCE.jpeg";
+import imageIFCE from "./IFCE.png";
 import imageUFC from "./UFC.png";
+import imageFPO from "./FPO.png";
+import imageUnopar from "./Unopar.png";
+import imageIVA from "./IVA.png";
 
 export default {
   name: "Index",
@@ -107,6 +137,9 @@ export default {
       imageUECE: imageUECE,
       imageUFC: imageUFC,
       imageIFCE: imageIFCE,
+      imageFPO: imageFPO,
+      imageUnopar: imageUnopar,
+      imageIVA: imageIVA,
     };
   },
   methods: {
