@@ -1,27 +1,38 @@
 <template>
   <div>
     <nav class="navbar navbar-expand-lg bg-dark">
-      <a class="mb-1" id="logo" href="index.html">Plataforma DivPro</a>
-      <a id="entrar" href="login.html"> Entrar</a>
-      <a id="cadastrar" href="cadastro.html"> Cadastrar</a>
+      <router-link to="#">
+      <a class="mb-1" id="logo">Plataforma DivPro</a>
+      </router-link>
+      <router-link to="/Login" id="entrar">
+      <a> Entrar</a>
+      </router-link>
+      <router-link to="/Cadastro">
+      <a id="cadastrar"> Cadastrar</a>
+      </router-link>
     </nav>
     <!-- <router-link to="/">Home</router-link> | -->
     <div class="d-flex" id="wrapper">
       <div class="bg-dark">
         <div class="bg-dark" id="sidebar-wrapper">
           <div class="list-group list-group-flush">
+            <router-link to="/Index">
             <a
-              href="index.html"
+
               class="list-group-item list-group-item-action bg-dark"
             >
               <label class="navWords" for="">Home</label>
             </a>
+            </router-link>
+            <router-link to="/CadastroProjeto">
             <a
-              href="cadastro_entidade.html"
+
               class="list-group-item list-group-item-action bg-dark"
             >
               <label class="navWords" for="">Cadastrar Projeto</label>
             </a>
+            </router-link>
+      
             <a href="#" class="list-group-item list-group-item-action bg-dark">
               <label class="navWords" for="">Procurar Projetos</label>
             </a>
