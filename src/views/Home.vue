@@ -122,12 +122,12 @@
 <script>
 ///Mudar depois para o caminho do arquivo para imagens, não sei pq não ta pegando o path relative
 //import imageUECE from "./public/Imagens/UECE.png";
-import imageUECE from "./UECE.png";
-import imageIFCE from "./IFCE.png";
-import imageUFC from "./UFC.png";
-import imageFPO from "./FPO.png";
-import imageUnopar from "./Unopar.png";
-import imageIVA from "./IVA.png";
+import imageUECE from "../../public/Imagens/UECE.png";
+import imageIFCE from "../../public/Imagens/IFCE.png";
+import imageUFC from "../../public/Imagens/UFC.png";
+import imageFPO from "../../public/Imagens/FPO.png";
+import imageUnopar from "../../public/Imagens/Unopar.png";
+import imageIVA from "../../public/Imagens/IVA.png";
 
 export default {
   name: "Index",
