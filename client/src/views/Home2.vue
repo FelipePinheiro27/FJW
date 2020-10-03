@@ -4,15 +4,18 @@
       <ul>
         <li v-for="projeto in projects" :key="projeto.id">
           <h4>{{ "Projeto ID " + projeto.id }}</h4>
-          <p>{{ "User ID " + projeto.userId }}</p>
+          <p>{{ "User ID " + projeto.user_id }}</p>
           <p>{{ "Titulo " + projeto.titulo }}</p>
           <p>{{ "Descricao " + projeto.descricao }}</p>
-          <p>{{ "Palavras Chaves " + projeto.palavrasChaves }}</p>
+          <p>{{ "Palavras Chaves " + projeto.palavras_chaves }}</p>
           <p>{{ "Tipo " + projeto.tipo }}</p>
-          <p>///////////////////////////////////////////////////////////////////////</p>
+          <p>
+            ///////////////////////////////////////////////////////////////////////
+          </p>
         </li>
       </ul>
     </div>
+    <button @click="getById" type="button">getById</button>
   </div>
 </template>
 
@@ -23,7 +26,7 @@ export default {
     return {
       users: [],
       projects: [],
-      baseURI: "http://localhost:8080/projeto/api/projects",
+      baseURI: "http://localhost:8080/BD/api/projects",
     };
   },
   created: function () {
@@ -32,5 +35,6 @@ export default {
       console.log(result.data);
     });
   },
+
 };
 </script>

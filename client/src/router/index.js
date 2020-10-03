@@ -6,6 +6,8 @@ import Login from "../views/Login.vue";
 import SignUp from "../views/SignUp.vue";
 import Users from "../views/Users.vue";
 import Index from "../views/Index.vue";
+import AboutProject from "../views/AboutProject.vue";
+
 
 import UserInsert from "../views/UserInsert.vue";
 import UserEdit from "../views/UserEdit.vue";
@@ -28,6 +30,11 @@ const routes = [{
         path: "/index",
         name: "Index",
         component: Index,
+    },
+    {
+        path: "/aboutproject",
+        name: "AboutProject",
+        component: AboutProject,
     },
     {
         path: "/home2",

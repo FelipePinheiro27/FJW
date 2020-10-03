@@ -59,7 +59,7 @@ export default {
     return {
       login: "",
       password: "",
-      baseURI: "http://localhost:8080/projeto/api/users/login",
+      baseURI: "http://localhost:8080/BD/api/users",
     };
   },
   created: function() {

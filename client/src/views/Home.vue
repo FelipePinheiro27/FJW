@@ -6,7 +6,7 @@
           <h4>{{ user.id }}</h4>
           <p>{{ user.login }}</p>
           <p>{{ user.password }}</p>
-          <p>{{ user.insitituicao }}</p>
+          <p>{{ user.instituicao }}</p>
           <p>{{ user.curso }}</p>
           <hr />
         </li>
@@ -31,7 +31,7 @@ export default {
     return {
       users: [],
       projects: [],
-      baseURI: "http://localhost:8080/projeto/api/users",
+      baseURI: "http://localhost:8080/BD/api/users",
     };
   },
   created: function () {

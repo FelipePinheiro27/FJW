@@ -31,6 +31,7 @@
       <div class="card_campos">
         <label class="text_login text-center">Instituição</label
         ><input
+          v-model="instituicao"
           type="text"
           id="instituicao"
           name="instituicao"
@@ -41,6 +42,7 @@
       <div class="card_campos">
         <label class="text_login text-center">Curso</label
         ><input
+          v-model="curso"
           type="text"
           id="curso"
           name="curso"
@@ -79,9 +81,9 @@ export default {
     return {
       login: "",
       password: "",
-      instituição: "",
+      instituicao: "",
       curso: "",
-      baseURI: "http://localhost:8080/projeto/api/users",
+      baseURI: "http://localhost:8080/BD/api/users",
     };
   },
   methods: {
@@ -89,7 +91,7 @@ export default {
       let obj = {
         login: this.login,
         password: this.password,
-        instituicao: this.instituição,
+        instituicao: this.instituicao,
         curso: this.curso,
       };
 
