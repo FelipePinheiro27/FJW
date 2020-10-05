@@ -14,7 +14,7 @@
         </div>
         <div class="text-left inputs_cp">
           <div class="form-group border_input_cp">
-            <label class="" for="title">Título:</label>
+            <label class="" for="title" id="title">Título:</label>
             <input
               type="text"
               class="form-control"
@@ -60,8 +60,8 @@
               <option value="PIBIC">PIBIC</option>
             </select>
           </div>
-          <div class="form-group">
-            <input class="form-control ficheiro_cp" type="file" id="ficheiro" />
+          <div >
+            <input class="" type="file" id="ficheiro">
           </div>
         </div>
 
@@ -121,8 +121,12 @@ export default {
 </script>
 
 <style>
+#title{
+  margin-top: 5%;
+}
+
 .titulo_cp {
-  width: 95%;
+  width: 100%;
 }
 .top_cp{
   width: 100%;

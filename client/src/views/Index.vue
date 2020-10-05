@@ -25,7 +25,7 @@
                 <label class="navWords" for="">Cadastrar Projeto</label>
               </a>
             </router-link>
-            <router-link to="/ProcurarProjeto">
+            <router-link to="/BuscarProjetos">
               <a
                 href="#"
                 class="list-group-item list-group-item-action bg-dark"

@@ -7,6 +7,7 @@ import SignUp from "../views/SignUp.vue";
 import Users from "../views/Users.vue";
 import Index from "../views/Index.vue";
 import AboutProject from "../views/AboutProject.vue";
+import BuscarProjetos from "../views/BuscarProjetos.vue";
 
 
 import UserInsert from "../views/UserInsert.vue";
@@ -30,6 +31,11 @@ const routes = [{
         path: "/index",
         name: "Index",
         component: Index,
+    },
+    {
+        path: "/buscarProjetos",
+        name: "BuscarProjetos",
+        component: BuscarProjetos
     },
     {
         path: "/aboutproject",
