@@ -8,6 +8,7 @@ import Users from "../views/Users.vue";
 import Index from "../views/Index.vue";
 import AboutProject from "../views/AboutProject.vue";
 import BuscarProjetos from "../views/BuscarProjetos.vue";
+import ShowProject from "../views/ShowProject.vue";
 
 
 import UserInsert from "../views/UserInsert.vue";
@@ -41,6 +42,11 @@ const routes = [{
         path: "/aboutproject",
         name: "AboutProject",
         component: AboutProject,
+    },
+    {
+        path: "/showproject",
+        name: "showproject",
+        component: ShowProject,
     },
     {
         path: "/home2",
