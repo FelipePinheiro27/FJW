@@ -31,7 +31,7 @@ export default {
     return {
       users: [],
       projects: [],
-      baseURI: "http://localhost:8080/BD/api/users",
+      baseURI: "http://localhost:8085/BD/api/users",
     };
   },
   created: function () {
@@ -40,5 +40,5 @@ export default {
       console.log(result.data);
     });
   },
-};
+};  
 </script>

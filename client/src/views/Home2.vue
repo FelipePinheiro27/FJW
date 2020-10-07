@@ -26,7 +26,7 @@ export default {
     return {
       users: [],
       projects: [],
-      baseURI: "http://localhost:8080/BD/api/projects",
+      baseURI: "http://localhost:8085/BD/api/projects",
     };
   },
   created: function () {

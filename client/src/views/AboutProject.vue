@@ -100,7 +100,7 @@ export default {
       descricao: "",
       palavras_chaves: "",
       tipo: "",
-      baseURI: "http://localhost:8080/BD/api/projects",
+      baseURI: "http://localhost:8085/BD/api/projects",
     };
   },
   methods: {

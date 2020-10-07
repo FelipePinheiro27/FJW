@@ -3,13 +3,17 @@
     <div>
       <NavBar />
     </div>
+    
     <div class="container">
+      <br> <br>
       <div class="top_cp">
         <br />
-        <h2 class="text-center">
+        <h2 class="text-center" id="logo_cp">
           Projetos desenvolvidos na faculdades de Crateús
         </h2>
+        <br>
       </div>
+      <br><br>
 
       <div class="left">
         
@@ -55,52 +59,48 @@
       <br />
       <div class="text-center">
         <div class="btn-buscar">
-          <button class="btn btn-primary">Consultar</button>
+          <button class="btn btn-primary" @click="teste">Consultar</button>
         </div>
         <div class="btn-limpar">
           <button type="reset" class="btn btn-danger">Limpar</button>
         </div>
-      </div>
+      </div> 
     </div>
 
+<div class="container">
     <table class="table table table-bordered">
         <thead>
+          <br> 
           <tr class="bg-primary">
-            <th scope="col">#</th>
-            <th scope="col">Área do Projeto</th>
-            <th scope="col">Tipo do Proejto</th>
-            <th scope="col">Autor</th>
+            <th >Área do Projeto</th>
+            <th >Tipo do Projeto</th>
+            <th>Título</th>
+            <th >Autor</th>
+            
           </tr>
         </thead>
 
-        <tbody>
-          <tr class="table-light">
-             <th scope="row">1</th>
-            <td>Ciência da Computação</td>
-            <td>BIA</td>
-            <td>Jean Camelo</td>
-          </tr>
+        <tbody id="tbody" v-for="projeto in projects" :key="projeto.id">
           
-          <tr class="table-light">
-            <th scope="row">2</th>
-            <td>Ciência da Computação</td>
-            <td>Extensão</td>
-            <td>Adalberto Felipe</td>
+           <tr class="table-light" v-for="user in users" :key="user.id" >
+            <td v-if="user.id == projeto.user_id" >{{user.curso}}</td> 
+            <td v-if="user.id == projeto.user_id" >{{projeto.tipo}}</td>
+            <td v-if="user.id == projeto.user_id" >{{projeto.titulo}}</td>
+            <td v-if="user.id == projeto.user_id">{{user.login}}</td>
+            <td v-if="user.id == projeto.user_id"><button @click="getId(user.id)">+</button></td>
           </tr>
-          <tr class="table-light">
-            <th scope="row">3</th>
-            <td>Ciência da Computação</td>
-            <td>BIA</td>
-            <td>Wallysom Lopes</td>
-          </tr>
+      
         </tbody>
     </table>
+    </div>
   </div>
+
 </template>
 
 
 
 <script>
+
 
 import NavBar from "./NavBar";
 
@@ -110,8 +110,31 @@ export default {
     NavBar,
   },
   data() {
-    return {};
+    return {
+      users: [],
+      projects: [],
+      baseURI: "http://localhost:8085/BD/api/projects",
+      baseURI2: "http://localhost:8085/BD/api/users"
+    };
   },
+  created: function () {
+    this.$http.get(this.baseURI).then((result) => {
+      this.projects = result.data;
+      console.log(result.data);
+    });
+},
+methods:{
+teste: function(){
+  this.$http.get(this.baseURI2).then((result) => {
+      this.users = result.data;
+      console.log(result.data);
+    });
+},
+getId: function(user){
+  console.log("ID do user: " + user)
+}
+
+},
 };
 </script>
 
@@ -119,10 +142,11 @@ export default {
 .container {
   background-color: white;
 }
-table {
-  margin-left: 5vw;
-  margin-top: 5%;
+
+.container table {
+  margin-top: 5%; 
 }
+
 
 .btn-buscar, .btn-limpar {
   display: inline-block;

@@ -83,7 +83,7 @@ export default {
       password: "",
       instituicao: "",
       curso: "",
-      baseURI: "http://localhost:8080/BD/api/users",
+      baseURI: "http://localhost:8085/BD/api/users",
     };
   },
   methods: {

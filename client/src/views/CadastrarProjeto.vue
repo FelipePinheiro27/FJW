@@ -89,20 +89,21 @@ export default {
   name: "CadastrarProjeto",
   data: function () {
     return {
-      user_id: "4",
+      user_id: "3",
       titulo: "",
       descricao: "",
       palavras_chaves: "",
       tipo: "",
-      baseURI: "http://localhost:8080/BD/api/projects",
+      baseURI: "http://localhost:8085/BD/api/projects/",
     };
   },
   methods: {
     postRegisterProject: function () {
-      //var user = localStorage.getItem("user");
-      //var uId = JSON.parse(user);
+      var jsonUser = localStorage.getItem('user');
+      var user = JSON.parse(jsonUser);
+
       let obj = {
-        user_id: this.user_id,
+        user_id: user.id,
         titulo: this.titulo,
         descricao: this.descricao,
         palavras_chaves: this.palavras_chaves,
@@ -112,7 +113,7 @@ export default {
         this.projects = result.data;
         console.log(result.data);
       });
-    },
+     },
   },
   components: {
     NavBar,
