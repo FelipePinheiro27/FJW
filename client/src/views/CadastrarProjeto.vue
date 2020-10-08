@@ -1,6 +1,9 @@
 <template>
   <div>
-    <div>
+    <div v-if="logged == true">
+      <NavBarLog />
+    </div>
+    <div v-if="logged == false">
       <NavBar />
     </div>
     <div>
@@ -9,7 +12,7 @@
         <div class="top_cp container">
           <br>
           <h2 id="logo_cp" class="text-center">
-            Prencha os Dados Abaixo Para Cadastrar seu Projeto
+            Preencha os Dados Abaixo Para Cadastrar seu Projeto
           </h2><br>
         </div>
         <div class="text-left inputs_cp">
@@ -85,17 +88,25 @@
 
 <script>
 import NavBar from "./NavBar";
+import NavBarLog from "./NavBarLog";
+
 export default {
   name: "CadastrarProjeto",
   data: function () {
     return {
-      user_id: "3",
+      logged: false,
+      user_id: "",
       titulo: "",
       descricao: "",
       palavras_chaves: "",
       tipo: "",
       baseURI: "http://localhost:8085/BD/api/projects/",
     };
+  },
+  mounted: function () {
+    if (localStorage.getItem("user")) {
+      this.logged = true;
+    }
   },
   methods: {
     postRegisterProject: function () {
@@ -117,6 +128,7 @@ export default {
   },
   components: {
     NavBar,
+    NavBarLog,
   },
 };
 </script>

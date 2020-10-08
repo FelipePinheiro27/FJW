@@ -1,6 +1,9 @@
 <template>
   <div>
-    <div>
+    <div v-if="logged == true">
+      <NavBarLog />
+    </div>
+    <div v-if="logged == false">
       <NavBar />
     </div>
     
@@ -46,14 +49,6 @@
               </select>
             </div>
           </form>
-
-      
-
-
-
-
-
-
 
       <br /><br />
       <br />
@@ -103,14 +98,17 @@
 
 
 import NavBar from "./NavBar";
+import NavBarLog from "./NavBarLog";
 
 export default {
   name: "BuscarProjetos",
   components: {
     NavBar,
+    NavBarLog,
   },
   data() {
     return {
+      logged: false,
       users: [],
       projects: [],
       baseURI: "http://localhost:8085/BD/api/projects",
@@ -123,6 +121,11 @@ export default {
       console.log(result.data);
     });
 },
+  mounted: function () {
+    if (localStorage.getItem("user")) {
+      this.logged = true;
+    }
+  },
 methods:{
 teste: function(){
   this.$http.get(this.baseURI2).then((result) => {

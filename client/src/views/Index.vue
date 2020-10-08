@@ -1,5 +1,6 @@
 <template>
   <div>
+        <div v-if="logged == false">
     <nav class="navbar navbar-expand-lg bg-dark">
       <router-link to="#">
         <a class="mb-1" id="logo">Plataforma DivPro</a>
@@ -11,6 +12,22 @@
         <a id="cadastrar"> Cadastrar</a>
       </router-link>
     </nav>
+        </div>
+                <div v-if="logged == true">
+    <nav class="navbar navbar-expand-lg bg-dark">
+      <router-link to="#">
+        <a class="mb-1" id="logo">Plataforma DivPro</a>
+      </router-link>
+      <div id="entrar">
+        <a style="color: silver"> {{users.login}}</a>
+      </div>
+      <router-link to="/Cadastro">
+        <a id="cadastrar"> Logout</a>
+      </router-link>
+    </nav>
+        </div>
+
+
     <div class="d-flex" id="wrapper">
       <div class="bg-dark">
         <div class="bg-dark" id="sidebar-wrapper">
@@ -140,13 +157,35 @@ export default {
       imageFPO: imageFPO,
       imageUnopar: imageUnopar,
       imageIVA: imageIVA,
+      logged: false,login: "",
+      users: [],
+      projects: [],
+      baseURI: "http://localhost:8085/BD/api/users",
     };
   },
+  mounted: function () {
+    if (localStorage.getItem("user")) {
+      this.logged = true;
+    }
+  },
+  created: function () {
+      var jsonUser = localStorage.getItem('user');
+      var user = JSON.parse(jsonUser);
+      let obj = {
+        login: user.login,
+      };
+      this.$http.post(this.baseURI, obj).then((result) => {
+        this.users = result.data;
+        console.log(result.data);
+      });
+      },
+
   methods: {
     //Modelo de função para depois linkar
-    teste: function () {
-      console.log("Teste");
-    },
+    teste: function(){
+  
+    
+},
   },
 };
 </script>
