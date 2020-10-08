@@ -1,24 +1,21 @@
 <template>
   <div>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <router-link to="/">
+      <router-link to="/index">
         <a class="navbar-brand h3 mb-0" id="home"
           ><h3 class="logo">DivPro</h3></a
         >
       </router-link>
       <div class="collapse navbar-collapse" id="navbarSite">
-        <router-link to="/CadastroProjeto">
+        <router-link to="/cadastrarprojeto">
           <a class="nav-link" style="color: white">Cadastrar Projeto</a>
         </router-link>
+        <router-link to="/BuscarProjetos">
         <a class="nav-link" style="color: white" href="#">Procurar Projetos</a>
+        </router-link>
         <div id="first">
           <a style="color: silver"><h6>{{users.login}}</h6></a>
         </div> 
-        <router-link to="/">
-          <a class="nav-link" style="color: cornflowerblue"
-            ><h6>Logout</h6></a
-          >
-        </router-link>
       </div>
     </nav>
   </div>
@@ -46,9 +43,11 @@ export default {
         this.users = result.data;
         console.log(result.data);
       });
-
-    
   },
+  methods: {
+  
+  }
+  
 };  
 </script>
 

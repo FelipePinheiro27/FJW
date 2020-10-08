@@ -30,7 +30,7 @@
       </div>
       <div>
         <div id="btn-loging">
-          <router-link to="/Login">
+          <router-link to="/index">
             <div class="btns_login">
               <button @click="postLogin" id="makeCad" type="submit">
                 LOGIN

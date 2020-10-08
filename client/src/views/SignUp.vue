@@ -52,7 +52,7 @@
       </div>
       <div>
         <div id="btn-loging">
-          <router-link to="/login">
+          <router-link to="/index">
             <div class="btns_login">
               <button @click="postRegister" id="makeCad" type="submit">
                 CADASTRAR
@@ -61,7 +61,7 @@
           </router-link>
         </div>
         <div id="btn-cadastro">
-          <router-link to="/login">
+          <router-link to="/Login">
             <div class="btns_login">
               <button onclick="" id="backLogin" type="submit">
                 VOLTAR PARA LOGIN
@@ -98,7 +98,6 @@ export default {
       this.$http.post(this.baseURI, obj).then((result) => {
         if (result.data != "") {
           localStorage.setItem("user", JSON.stringify(result.data));
-          window.location.href = "/";
         } else {
           alert("Check the login and password.");
         }

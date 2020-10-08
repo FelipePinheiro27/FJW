@@ -8,8 +8,8 @@
       <router-link to="/Login" id="entrar">
         <a> Entrar</a>
       </router-link>
-      <router-link to="/Cadastro">
-        <a id="cadastrar"> Cadastrar</a>
+      <router-link to="/signup">
+        <a id="cadastrar"> Registrar</a>
       </router-link>
     </nav>
         </div>
@@ -21,8 +21,8 @@
       <div id="entrar">
         <a style="color: silver"> {{users.login}}</a>
       </div>
-      <router-link to="/Cadastro">
-        <a id="cadastrar"> Logout</a>
+      <router-link to="#">
+        <a id="cadastrar" @click="logout"> Logout</a>
       </router-link>
     </nav>
         </div>
@@ -32,12 +32,13 @@
       <div class="bg-dark">
         <div class="bg-dark" id="sidebar-wrapper">
           <div class="list-group list-group-flush">
-            <router-link to="/">
+            <!-- <router-link to="/">
               <a class="list-group-item list-group-item-action bg-dark">
                 <label class="navWords" for="">Home</label>
               </a>
-            </router-link>
-            <router-link to="/CadastroProjeto">
+            </router-link> -->
+            <div id="meio">
+            <router-link to="/cadastrarprojeto">
               <a class="list-group-item list-group-item-action bg-dark">
                 <label class="navWords" for="">Cadastrar Projeto</label>
               </a>
@@ -66,6 +67,7 @@
             <a href="#" class="list-group-item list-group-item-action bg-dark"
               ><label class="navWords" for="">Alterar Dados da Conta</label>
             </a>
+            </div>
           </div>
         </div>
       </div>
@@ -75,7 +77,9 @@
           Pesquise por trabalhos e projetos desenvolvidos nas faculdades
           públicas de Crateús
         </h3>
+        
         <div class="form-group inputs_ind">
+          <router-link to="/BuscarProjetos">
           <div class="logos">
             <input
               :src="imageUECE"
@@ -85,6 +89,8 @@
               name="UECE"
             />
           </div>
+          </router-link>
+          <router-link to="/BuscarProjetos">
           <div class="logos">
             <input
               @click="teste"
@@ -94,6 +100,8 @@
               :src="imageUFC"
             />
           </div>
+          </router-link>
+          <router-link to="/BuscarProjetos">
           <div class="logos">
             <input
               @click="teste"
@@ -103,6 +111,8 @@
               :src="imageIFCE"
             />
           </div>
+          </router-link>
+          <router-link to="/BuscarProjetos">
           <div class="logos">
             <input
               @click="teste"
@@ -112,6 +122,8 @@
               :src="imageFPO"
             />
           </div>
+          </router-link>
+          <router-link to="/BuscarProjetos">
           <div class="logos">
             <input
               @click="teste"
@@ -121,6 +133,8 @@
               :src="imageUnopar"
             />
           </div>
+          </router-link>
+          <router-link to="/BuscarProjetos">
           <div class="logos">
             <input
               @click="teste"
@@ -130,6 +144,7 @@
               :src="imageIVA"
             />
           </div>
+          </router-link>
         </div>
       </div>
     </div>
@@ -186,6 +201,10 @@ export default {
   
     
 },
+logout: function () {
+      localStorage.removeItem("user");
+      location.reload();
+    }
   },
 };
 </script>
@@ -233,6 +252,9 @@ h3 {
 }
 #wrapper {
   overflow-x: hidden;
+}
+#meio{
+  text-align: center;
 }
 
 #sidebar-wrapper {

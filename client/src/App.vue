@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home </router-link> |
+    <!-- <div id="nav"> -->
+      <!-- <router-link to="/">Home </router-link> |
       <router-link to="/home2"> Home2 </router-link>|
       <router-link to="/signup">Register</router-link>
       <router-link to="/aboutproject"> | AboutProject</router-link>|
@@ -11,8 +11,8 @@
       <a href="#" v-if="logged" @click="logout"> | Logout</a>
       <router-link to="/cadastrarprojeto"> | Cadastrar Projetos</router-link>
       <router-link to="/index"> | Index</router-link>
-      <button @click="teste">Clica aqui Para ver o ID do User logado no console (Deve Estar logado)</button>
-    </div>
+      <button @click="teste">Clica aqui Para ver o ID do User logado no console (Deve Estar logado)</button> -->
+    <!-- </div> -->
     <router-view />
   </div>
 </template>
@@ -48,9 +48,10 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+  /* text-align: center; */
   color: #2c3e50;
 }
+
 
 ul {
   list-style-type: none;

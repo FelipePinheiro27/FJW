@@ -12,7 +12,7 @@
       <div class="top_cp">
         <br />
         <h2 class="text-center" id="logo_cp">
-          Projetos desenvolvidos na faculdades de Crateús
+          Projetos desenvolvidos nas faculdades de Crateús
         </h2>
         <br>
       </div>
@@ -82,7 +82,8 @@
             <td v-if="user.id == projeto.user_id" >{{projeto.tipo}}</td>
             <td v-if="user.id == projeto.user_id" >{{projeto.titulo}}</td>
             <td v-if="user.id == projeto.user_id">{{user.login}}</td>
-            <td v-if="user.id == projeto.user_id"><button @click="getId(user.id)">+</button></td>
+            <td v-if="user.id == projeto.user_id"><button @click="setId(projeto.id , './ShowProject')">
+              +</button></td>
           </tr>
       
         </tbody>
@@ -133,9 +134,15 @@ teste: function(){
       console.log(result.data);
     });
 },
-getId: function(user){
-  console.log("ID do user: " + user)
-}
+setId: function(project, URL){
+    var obj = {id_projeto: project}
+    var strObj = JSON.stringify(obj);
+
+    localStorage.setItem("id_projeto",strObj);
+  console.log(project)
+
+  window.open(URL,"janela1","width=800, height=600,directories=no,location=no,menubar=no,scrollbars=no, status=no, toolbar=no, resizable=no")
+},
 
 },
 };
