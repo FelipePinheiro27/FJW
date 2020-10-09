@@ -1,6 +1,6 @@
-<template>
-    <form class="form_cadastro container" autocomplete="on">
-    <div class="container">
+<template >
+  <div>
+      <form class="form_login container" autocomplete="on">
       <div class="text-center">
         <img id="img_login" src="Imagens/imagem_login.png" alt="" />
         <h1 class="title">DivPro</h1>
@@ -29,14 +29,13 @@
         />
       </div>
       <div>
-        <div id="btn-loging">
-          <router-link to="/index">
+        <div id="btn-loging" >
             <div class="btns_login">
               <button @click="postLogin" id="makeCad" type="submit">
                 LOGIN
               </button>
             </div>
-          </router-link>
+          
         </div>
         <div id="btn-cadastro">
           <router-link to="/signup">
@@ -48,8 +47,10 @@
           </router-link>
         </div>
       </div>
-    </div>
-  </form>
+   </form>
+
+   <!-- <br> <br> <br> <br> <br> <br> -->
+  </div>
 </template>
 
 <script>
@@ -64,35 +65,42 @@ export default {
   },
   created: function() {
     if(localStorage.getItem("user")) {
-        this.$router.replace("/");
+        this.$router.replace("/index");
     } 
   },
   methods: {
+    
     postLogin: function() {
+      if(this.login != "" && this.password != ""){
       let obj = {
         login: this.login,
         password: this.password,
       };
-
+      
       this.$http.post(this.baseURI, obj).then((result) => {
         if (result.data != "") {
           localStorage.setItem("user", JSON.stringify(result.data));
           location.reload();
-        } else {
-          alert("Check the login and password.");
         }
       });
+      }
     },
   },
+    validaLogin: function(){
+    if(this.login != "" && this.password != ""){
+      return true
+  }
+  else
+  return false
+}
 };
 </script>
 
 <style>
 .form_login {
-  width: 25%;
+  width: 32%;
   margin: auto;
   padding-top: 3%;
-  margin-top: 4%;
   background-color: white;
 }
 .card_campos > label {
@@ -123,9 +131,6 @@ export default {
 .title {
   color: cornflowerblue;
 }
-#cadastro {
-  margin-bottom: 10%;
-}
 .btns-login {
   margin-top: 1%;
 }
@@ -141,6 +146,12 @@ export default {
   border: 0px;
   margin-bottom: 2%;
 }
+
+body {
+    background-image: url(2.jpg);
+    background-repeat: repeat;
+}
+
 .text_login {
   margin-top: 2%;
   margin-bottom: 2%;

@@ -1,6 +1,6 @@
 <template>
-  <form class="form_cadastro container" autocomplete="on">
-    <div class="container">
+<div class="img_fundo">
+       <form class="form_cadastro container" autocomplete="on">
       <div class="text-center">
         <img id="img_login" src="Imagens/imagem_login.png" alt="" />
         <h1 class="title">DivPro</h1>
@@ -52,13 +52,11 @@
       </div>
       <div>
         <div id="btn-loging">
-          <router-link to="/index">
             <div class="btns_login">
               <button @click="postRegister" id="makeCad" type="submit">
                 CADASTRAR
               </button>
             </div>
-          </router-link>
         </div>
         <div id="btn-cadastro">
           <router-link to="/Login">
@@ -70,8 +68,9 @@
           </router-link>
         </div>
       </div>
-    </div>
-  </form>
+     </form>
+  </div>
+  
 </template>
 
 <script>
@@ -88,6 +87,7 @@ export default {
   },
   methods: {
     postRegister: function () {
+      if(this.login != "" && this.password != "" && this.instituicao  != "" && this.curso != ""){
       let obj = {
         login: this.login,
         password: this.password,
@@ -98,10 +98,13 @@ export default {
       this.$http.post(this.baseURI, obj).then((result) => {
         if (result.data != "") {
           localStorage.setItem("user", JSON.stringify(result.data));
-        } else {
-          alert("Check the login and password.");
+          // location.reload();
+          this.$router.replace("/index");
+          location.reload();
         }
+      
       });
+      }
     },
   },
 };
@@ -110,6 +113,7 @@ export default {
 <style>
 .form_cadastro {
   width: 25%;
+  height: 100%;
   margin: auto;
   padding-top: 3%;
   background-color: white;
@@ -121,7 +125,7 @@ export default {
 .card_campos > input {
   border-radius: 5px;
   width: 90%;
-  padding-left: 5%;
+  padding-left: 2%;
 }
 .card_campos > button {
   background-color: rgb(55, 104, 196);

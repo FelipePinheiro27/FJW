@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="img_fundo">
     <div v-if="logged == true">
       <NavBarLog />
     </div>
@@ -78,7 +78,7 @@
             Cadastrar
           </button>
           <button type="reset" id="limpar_cp" class="btn butoes_cp btn-danger">
-            Limpar
+            Limpar 
           </button>
         </div>
       </form>
@@ -122,6 +122,8 @@ export default {
       };
       this.$http.post(this.baseURI, obj).then((result) => {
         this.projects = result.data;
+              location.reload();
+              alert("Projeto cadastrado!!")
         console.log(result.data);
       });
      },

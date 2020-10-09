@@ -6,7 +6,6 @@ import Login from "../views/Login.vue";
 import SignUp from "../views/SignUp.vue";
 import Users from "../views/Users.vue";
 import Index from "../views/Index.vue";
-import AboutProject from "../views/AboutProject.vue";
 import BuscarProjetos from "../views/BuscarProjetos.vue";
 import ShowProject from "../views/ShowProject.vue";
 
@@ -37,11 +36,6 @@ const routes = [{
         path: "/buscarProjetos",
         name: "BuscarProjetos",
         component: BuscarProjetos
-    },
-    {
-        path: "/aboutproject",
-        name: "AboutProject",
-        component: AboutProject,
     },
     {
         path: "/showproject",

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="img_fundo">
     <div v-if="logged == true">
       <NavBarLog />
     </div>
@@ -71,6 +71,7 @@
             <th >Tipo do Projeto</th>
             <th>Título</th>
             <th >Autor</th>
+            <th>*</th>
             
           </tr>
         </thead>
@@ -82,8 +83,10 @@
             <td v-if="user.id == projeto.user_id" >{{projeto.tipo}}</td>
             <td v-if="user.id == projeto.user_id" >{{projeto.titulo}}</td>
             <td v-if="user.id == projeto.user_id">{{user.login}}</td>
-            <td v-if="user.id == projeto.user_id"><button @click="setId(projeto.id , './ShowProject')">
-              +</button></td>
+            <td v-if="user.id == projeto.user_id">
+              <div @click="setId(projeto.id , './ShowProject')" id="img_lupa"></div>
+              
+              </td>
           </tr>
       
         </tbody>
@@ -141,7 +144,7 @@ setId: function(project, URL){
     localStorage.setItem("id_projeto",strObj);
   console.log(project)
 
-  window.open(URL,"janela1","width=800, height=600,directories=no,location=no,menubar=no,scrollbars=no, status=no, toolbar=no, resizable=no")
+  window.open(URL,"janela1","width=1080, height=800,directories=no,location=no,menubar=no,scrollbars=no, status=no, toolbar=no, resizable=no")
 },
 
 },
@@ -163,5 +166,12 @@ setId: function(project, URL){
   display: inline-block;
   margin-right: 1%;
   margin-bottom: 2%;
+}
+
+#img_lupa{
+  background-image: url(lupa.jpg);
+  width: 30px;
+  height: 16px;
+  cursor: pointer;
 }
 </style>

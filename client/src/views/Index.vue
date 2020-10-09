@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="img_fundo">
         <div v-if="logged == false">
     <nav class="navbar navbar-expand-lg bg-dark">
       <router-link to="#">
@@ -73,11 +73,13 @@
       </div>
 
       <div class="text-left" id="page-content-wrapper">
-        <h3 id="title">
-          Pesquise por trabalhos e projetos desenvolvidos nas faculdades
-          públicas de Crateús
-        </h3>
-        
+        <div id="faixa">
+        <h4 id="title">
+            <b> Pesquise por trabalhos e projetos desenvolvidos nas faculdades de Crateús
+          </b>
+        </h4>
+        </div>
+        <div>
         <div class="form-group inputs_ind">
           <router-link to="/BuscarProjetos">
           <div class="logos">
@@ -112,6 +114,8 @@
             />
           </div>
           </router-link>
+            </div>
+            <div id="espacamento">
           <router-link to="/BuscarProjetos">
           <div class="logos">
             <input
@@ -145,6 +149,7 @@
             />
           </div>
           </router-link>
+          </div>
         </div>
       </div>
     </div>
@@ -212,6 +217,7 @@ logout: function () {
 <style>
 #title {
   color: black;
+  
 }
 .logos {
   width: 30%;
@@ -294,5 +300,18 @@ h3 {
 
 #wrapper.toggled #sidebar-wrapper {
   margin-left: -5%;
+}
+
+#espacamento{
+  margin-left: 5%;
+  margin-top: 6%;
+}
+
+#faixa{
+  /* background-color: white; */
+  margin-left: 3%;
+  margin-right: 3%;
+  text-align: center;
+  /* margin-top: -7%; */
 }
 </style>

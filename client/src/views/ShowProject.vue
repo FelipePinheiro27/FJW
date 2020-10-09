@@ -1,5 +1,5 @@
 <template>
-  <div class="box">
+  <div class="container" >
     <div >
         <nav class="navbar navbar-light" style="background-color: #446088;">
                 <b style="color: white">INFORMAÇÕES DO PROJETO:</b>
@@ -8,27 +8,29 @@
           <div v-for="user in users" :key="user.id">
             <div v-if="user.id == projeto.user_id && projeto.id == id_projeto">
         <b>Autor: {{user.login}} </b><br>
-        <b>palavras_chaves:{{projeto.palavras_chaves}}</b> <br>
-        <b>Área do Projeto:{{user.curso}}</b>
+        <b>palavras_chaves: {{projeto.palavras_chaves}}</b> <br>
+        <b>Área do Projeto: {{user.curso}}</b>
 
         <nav class="navbar navbar-light" style="background-color: #446088;">
                 <b style="color: white">TÍTULO: </b>
         </nav>
         <label for="">
-          {{projeto.titulo}}
+         <h4>  {{projeto.titulo}}</h4>
         </label>
         
 
         <nav class="navbar navbar-light" style=" background-color: #446088;">
-                <b style="color: white">DESCRIÇÃO:</b>
+                <b style="color: white">DESCRIÇÃO: </b>
         </nav>
-          <label for="">
+        <b>
             {{projeto.descricao}}
-            </label>
+            </b>
         <nav class="navbar navbar-light" style="background-color: #446088;">
-                <b style="color: white">CORPO EM ANEXO:</b>
+                <b style="color: white">CORPO EM ANEXO: </b>
         </nav>
-        BAIXAR ARQUIVO..
+        BAIXAR ARQUIVO...
+
+        <br> <br> <br> <br>
         </div>
         </div>
     </div>
@@ -84,13 +86,14 @@ methods:{
 .info b{
   float: left;
 }
-.box {
-  background-color: white;
-  /* margin-top: 3%;
-  margin-left: 5%;
-  margin-right: 5%; */
+template {
+    background-color: white;
 }
 .navbar navbar-light{
     text-emphasis-color: white;
     text-align: left;
+}
+
+#last{
+  margin-bottom: 5%;
 }
