@@ -71,7 +71,7 @@
             <th >Tipo do Projeto</th>
             <th>Título</th>
             <th >Autor</th>
-            <th>*</th>
+            <!-- <th></th> -->
             
           </tr>
         </thead>

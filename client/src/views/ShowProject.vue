@@ -28,9 +28,10 @@
         <nav class="navbar navbar-light" style="background-color: #446088;">
                 <b style="color: white">CORPO EM ANEXO: </b>
         </nav>
-        BAIXAR ARQUIVO...
-
+        BAIXAR ARQUIVO... 
+         <a id="baixar" :href="'uploads/user/'+projeto.id + '.pdf'" download="pdf">{{projeto.id}}.pdf</a><br>
         <br> <br> <br> <br>
+
         </div>
         </div>
     </div>

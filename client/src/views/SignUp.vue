@@ -36,7 +36,7 @@
           id="instituicao"
           name="instituicao"
           placeholder="Digite sua Instituição"
-          required
+          
         />
       </div>
       <div class="card_campos">
@@ -47,7 +47,7 @@
           id="curso"
           name="curso"
           placeholder="Digite o seu Curso"
-          required
+          
         />
       </div>
       <div>
@@ -87,7 +87,7 @@ export default {
   },
   methods: {
     postRegister: function () {
-      if(this.login != "" && this.password != "" && this.instituicao  != "" && this.curso != ""){
+      if(this.login != "" && this.password != ""){
       let obj = {
         login: this.login,
         password: this.password,

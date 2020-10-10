@@ -64,7 +64,11 @@
             </select>
           </div>
           <div >
-            <input class="" type="file" id="ficheiro">
+            <input type="file"
+      id="file"
+      ref="file"
+      name="image"
+      >
           </div>
         </div>
 
@@ -95,12 +99,14 @@ export default {
   data: function () {
     return {
       logged: false,
+      id: 0,
       user_id: "",
       titulo: "",
       descricao: "",
       palavras_chaves: "",
       tipo: "",
       baseURI: "http://localhost:8085/BD/api/projects/",
+      baseUploadURI: "http://localhost:8085/BD/upload"
     };
   },
   mounted: function () {
@@ -109,7 +115,34 @@ export default {
     }
   },
   methods: {
+    handleFileUpload(id, update) {
+
+      this.file = this.$refs.file.files[0];
+
+      let obj = {
+        resource: "user",
+        id: id,
+      };
+      let json = JSON.stringify(obj);
+
+      let form = new FormData();
+      form.append("obj", json);
+      form.append("file", this.file);
+
+      this.$http
+        .post(this.baseUploadURI, form, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        })
+        .then((result) => {
+          console.log(result);
+        });
+        this.clearInput();
+    },
     postRegisterProject: function () {
+      if(this.titulo != "" && this.descricao != "" && this.palavras_chaves != "" && this.tipo != "" && 
+      document.getElementById("file") != null){
       var jsonUser = localStorage.getItem('user');
       var user = JSON.parse(jsonUser);
 
@@ -122,11 +155,21 @@ export default {
       };
       this.$http.post(this.baseURI, obj).then((result) => {
         this.projects = result.data;
-              location.reload();
+        this.handleFileUpload(this.projects.id);
+              // location.reload();
               alert("Projeto cadastrado!!")
-        console.log(result.data);
       });
+      }
+      else
+      alert("Verifique se todos os campos estão preenchidos!!")
      },
+     clearInput: function(){
+       document.getElementById("palavrasChaves").value = "";
+       document.getElementById("descricao").value = "";
+       document.getElementById("file").value = null;
+       document.getElementById("titulo").value = "";
+     },
+      
   },
   components: {
     NavBar,
