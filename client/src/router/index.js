@@ -20,12 +20,12 @@ Vue.use(VueRouter);
 
 const routes = [{
         path: "*",
-        component: Home,
+        component: Index,
     },
     {
         path: "/",
-        name: "Home",
-        component: Home,
+        name: "Index",
+        component: Index,
     },
     {
         path: "/index",

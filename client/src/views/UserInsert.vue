@@ -13,7 +13,7 @@ export default {
   name: "UserInsert",
   data: function() {
     return {
-      login: "",
+      login: "",  
       password: "",
       baseURI: "http://localhost:8080/projeto/api/users",
     };
