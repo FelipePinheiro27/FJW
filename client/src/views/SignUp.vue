@@ -1,5 +1,5 @@
 <template>
-<div class="img_fundo">
+<div class="teste_signUp">
        <form class="form_cadastro container" autocomplete="on">
       <div class="text-center">
         <img id="img_login" src="Imagens/imagem_login.png" alt="" />
@@ -68,6 +68,7 @@
           </router-link>
         </div>
       </div>
+      <br>
      </form>
   </div>
   
@@ -124,7 +125,7 @@ export default {
 }
 .card_campos > input {
   border-radius: 5px;
-  width: 90%;
+  width: 100%;
   padding-left: 2%;
 }
 .card_campos > button {
@@ -168,5 +169,9 @@ export default {
 .text_login {
   margin-top: 2%;
   margin-bottom: 2%;
+}
+
+.teste_signUp{
+  margin-top: 1%;
 }
 </style>

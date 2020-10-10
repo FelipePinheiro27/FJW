@@ -1,5 +1,5 @@
 <template >
-  <div>
+  <div class="teste_login">
       <form class="form_login container" autocomplete="on">
       <div class="text-center">
         <img id="img_login" src="Imagens/imagem_login.png" alt="" />
@@ -46,6 +46,7 @@
             </div>
           </router-link>
         </div>
+        <br>
       </div>
    </form>
 
@@ -98,7 +99,7 @@ export default {
 
 <style>
 .form_login {
-  width: 32%;
+  width: 25%;
   margin: auto;
   padding-top: 3%;
   background-color: white;
@@ -152,11 +153,16 @@ body {
     background-repeat: repeat;
 }
 
+.teste_login{
+  margin-top: 5%;
+}
+
 .text_login {
   margin-top: 2%;
   margin-bottom: 2%;
 }
 #btn-cadastro {
-  margin-top: -8%;
+  margin-top: -6%;
+  /* margin-bottom: 10%; */
 }
 </style>
