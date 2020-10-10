@@ -88,7 +88,7 @@ export default {
   },
   methods: {
     postRegister: function () {
-      if(this.login != "" && this.password != ""){
+      if(this.login != "" && this.password != "" && this.login.length >= 6 && this.password.length >= 6){
       let obj = {
         login: this.login,
         password: this.password,
@@ -105,6 +105,9 @@ export default {
         }
       
       });
+      }
+      else{
+        alert("Login ou senha curtos, é necessário mais que 5 caracteres!");
       }
     },
   },
