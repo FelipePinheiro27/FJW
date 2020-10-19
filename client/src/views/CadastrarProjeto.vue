@@ -10,10 +10,11 @@
       <form class="box" action="">
         <br />
         <div class="top_cp container">
-          <br>
+          <br />
           <h2 id="logo_cp" class="text-center">
             Preencha os Dados Abaixo Para Cadastrar seu Projeto
-          </h2><br>
+          </h2>
+          <br />
         </div>
         <div class="text-left inputs_cp">
           <div class="form-group border_input_cp">
@@ -63,12 +64,8 @@
               <option value="PIBIC">PIBIC</option>
             </select>
           </div>
-          <div >
-            <input type="file"
-      id="file"
-      ref="file"
-      name="image"
-      >
+          <div>
+            <input type="file" id="file" ref="file" name="image" />
           </div>
         </div>
 
@@ -82,7 +79,7 @@
             Cadastrar
           </button>
           <button type="reset" id="limpar_cp" class="btn butoes_cp btn-danger">
-            Limpar 
+            Limpar
           </button>
         </div>
       </form>
@@ -105,18 +102,17 @@ export default {
       descricao: "",
       palavras_chaves: "",
       tipo: "",
-      baseURI: "http://localhost:8085/BD/api/projects/",
-      baseUploadURI: "http://localhost:8085/BD/upload"
+      baseURI: "http://localhost:8080/BD/api/projects",
+      baseUploadURI: "http://localhost:8080/BD/upload",
     };
   },
   mounted: function () {
-    if (localStorage.getItem("user")) {
+    if (this.$session.exists()) {
       this.logged = true;
     }
   },
   methods: {
     handleFileUpload(id, update) {
-
       this.file = this.$refs.file.files[0];
 
       let obj = {
@@ -138,38 +134,40 @@ export default {
         .then((result) => {
           console.log(result);
         });
-        this.clearInput();
+      this.clearInput();
     },
     postRegisterProject: function () {
-      if(this.titulo != "" && this.descricao != "" && this.palavras_chaves != "" && this.tipo != "" && 
-      document.getElementById("file") != null){
-      var jsonUser = localStorage.getItem('user');
-      var user = JSON.parse(jsonUser);
+      if (
+        this.titulo != "" &&
+        this.descricao != "" &&
+        this.palavras_chaves != "" &&
+        this.tipo != ""
+        && this.$session.exists()
+      ) {
+        var jsonUser = this.$session.get("user");
+        var user = JSON.parse(jsonUser);
 
-      let obj = {
-        user_id: user.id,
-        titulo: this.titulo,
-        descricao: this.descricao,
-        palavras_chaves: this.palavras_chaves,
-        tipo: this.tipo,
-      };
-      this.$http.post(this.baseURI, obj).then((result) => {
-        this.projects = result.data;
-        this.handleFileUpload(this.projects.id);
-              // location.reload();
-              alert("Projeto cadastrado!!")
-      });
-      }
-      else
-      alert("Verifique se todos os campos estão preenchidos!!")
-     },
-     clearInput: function(){
-       document.getElementById("palavrasChaves").value = "";
-       document.getElementById("descricao").value = "";
-       document.getElementById("file").value = null;
-       document.getElementById("titulo").value = "";
-     },
-      
+        let obj = {
+          user_id: user.id,
+          titulo: this.titulo,
+          descricao: this.descricao,
+          palavras_chaves: this.palavras_chaves,
+          tipo: this.tipo,
+        };
+        this.$http.post(this.baseURI, obj).then((result) => {
+          this.projects = result.data;
+          this.handleFileUpload(this.projects.id);
+          location.reload();
+          alert("Projeto cadastrado!!");
+        });
+      } else alert("Verifique se todos os campos estão preenchidos!!");
+    },
+    clearInput: function () {
+      document.getElementById("palavrasChaves").value = "";
+      document.getElementById("descricao").value = "";
+      document.getElementById("file").value = null;
+      document.getElementById("titulo").value = "";
+    },
   },
   components: {
     NavBar,
@@ -179,14 +177,14 @@ export default {
 </script>
 
 <style>
-#title{
+#title {
   margin-top: 5%;
 }
 
 .titulo_cp {
   width: 100%;
 }
-.top_cp{
+.top_cp {
   width: 100%;
   background-color: cornflowerblue;
   color: white;

@@ -1,32 +1,31 @@
 <template>
   <div class="img_fundo">
-        <div v-if="logged == false">
-    <nav class="navbar navbar-expand-lg bg-dark">
-      <router-link to="#">
-        <a class="mb-1" id="logo">Plataforma DivPro</a>
-      </router-link>
-      <router-link to="/Login" id="entrar">
-        <a> Entrar</a>
-      </router-link>
-      <router-link to="/signup">
-        <a id="cadastrar"> Registrar</a>
-      </router-link>
-    </nav>
+    <div v-if="logged == false">
+      <nav class="navbar navbar-expand-lg bg-dark">
+        <router-link to="#">
+          <a class="mb-1" id="logo">Plataforma DivPro</a>
+        </router-link>
+        <router-link to="/Login" id="entrar">
+          <a> Entrar</a>
+        </router-link>
+        <router-link to="/signup">
+          <a id="cadastrar"> Registrar</a>
+        </router-link>
+      </nav>
+    </div>
+    <div v-if="logged == true">
+      <nav class="navbar navbar-expand-lg bg-dark">
+        <router-link to="#">
+          <a class="mb-1" id="logo">Plataforma DivPro</a>
+        </router-link>
+        <div id="entrar">
+          <a style="color: silver"> {{ login }}</a>
         </div>
-                <div v-if="logged == true">
-    <nav class="navbar navbar-expand-lg bg-dark">
-      <router-link to="#">
-        <a class="mb-1" id="logo">Plataforma DivPro</a>
-      </router-link>
-      <div id="entrar">
-        <a style="color: silver"> {{users.login}}</a>
-      </div>
-      <router-link to="#">
-        <a id="cadastrar" @click="logout"> Logout</a>
-      </router-link>
-    </nav>
-        </div>
-
+        <router-link to="#">
+          <a id="cadastrar" @click="logout"> Logout</a>
+        </router-link>
+      </nav>
+    </div>
 
     <div class="d-flex" id="wrapper">
       <div class="bg-dark">
@@ -38,35 +37,38 @@
               </a>
             </router-link> -->
             <div id="meio">
-            <router-link to="/cadastrarprojeto">
-              <a class="list-group-item list-group-item-action bg-dark">
-                <label class="navWords" for="">Cadastrar Projeto</label>
-              </a>
-            </router-link>
-            <router-link to="/BuscarProjetos">
+              <router-link to="/cadastrarprojeto">
+                <a class="list-group-item list-group-item-action bg-dark">
+                  <label class="navWords" for="">Cadastrar Projeto</label>
+                </a>
+              </router-link>
+              <router-link to="/BuscarProjetos">
+                <a
+                  href="#"
+                  class="list-group-item list-group-item-action bg-dark"
+                >
+                  <label class="navWords" for="">Procurar Projetos</label>
+                </a>
+              </router-link>
+
               <a
                 href="#"
                 class="list-group-item list-group-item-action bg-dark"
               >
-                <label class="navWords" for="">Procurar Projetos</label>
+                <label class="navWords" for="">Meus Projetos</label>
               </a>
-            </router-link>
-
-            <a href="#" class="list-group-item list-group-item-action bg-dark">
-              <label class="navWords" for="">Meus Projetos</label>
-            </a>
-            <a href="#" class="list-group-item list-group-item-action bg-dark"
-              ><label class="navWords" for="">Favoritos</label>
-            </a>
-            <a href="#" class="list-group-item list-group-item-action bg-dark"
-              ><label class="navWords" for="">Eventos</label>
-            </a>
-            <a href="#" class="list-group-item list-group-item-action bg-dark"
-              ><label class="navWords" for="">Perfil</label>
-            </a>
-            <a href="#" class="list-group-item list-group-item-action bg-dark"
-              ><label class="navWords" for="">Alterar Dados da Conta</label>
-            </a>
+              <a href="#" class="list-group-item list-group-item-action bg-dark"
+                ><label class="navWords" for="">Favoritos</label>
+              </a>
+              <a href="#" class="list-group-item list-group-item-action bg-dark"
+                ><label class="navWords" for="">Eventos</label>
+              </a>
+              <a href="#" class="list-group-item list-group-item-action bg-dark"
+                ><label class="navWords" for="">Perfil</label>
+              </a>
+              <a href="#" class="list-group-item list-group-item-action bg-dark"
+                ><label class="navWords" for="">Alterar Dados da Conta</label>
+              </a>
             </div>
           </div>
         </div>
@@ -74,81 +76,83 @@
 
       <div class="text-left" id="page-content-wrapper">
         <div id="faixa">
-        <h4 id="title">
-            <b> Pesquise por trabalhos e projetos desenvolvidos nas faculdades de Crateús
-          </b>
-        </h4>
+          <h4 id="title">
+            <b>
+              Pesquise por trabalhos e projetos desenvolvidos nas faculdades de
+              Crateús
+            </b>
+          </h4>
         </div>
         <div>
-        <div class="form-group inputs_ind">
-          <router-link to="/BuscarProjetos">
-          <div class="logos">
-            <input
-              :src="imageUECE"
-              @click="teste"
-              class="form-control faculades_ind d-inline UECE"
-              type="Image"
-              name="UECE"
-            />
+          <div class="form-group inputs_ind">
+            <router-link to="/BuscarProjetos">
+              <div class="logos">
+                <input
+                  :src="imageUECE"
+                  @click="teste"
+                  class="form-control faculades_ind d-inline UECE"
+                  type="Image"
+                  name="UECE"
+                />
+              </div>
+            </router-link>
+            <router-link to="/BuscarProjetos">
+              <div class="logos">
+                <input
+                  @click="teste"
+                  class="form-control faculades_ind d-inline UFC"
+                  type="Image"
+                  name="UFC"
+                  :src="imageUFC"
+                />
+              </div>
+            </router-link>
+            <router-link to="/BuscarProjetos">
+              <div class="logos">
+                <input
+                  @click="teste"
+                  class="form-control faculades_ind d-inline IFCE"
+                  type="Image"
+                  name="IFCE"
+                  :src="imageIFCE"
+                />
+              </div>
+            </router-link>
           </div>
-          </router-link>
-          <router-link to="/BuscarProjetos">
-          <div class="logos">
-            <input
-              @click="teste"
-              class="form-control faculades_ind d-inline UFC"
-              type="Image"
-              name="UFC"
-              :src="imageUFC"
-            />
-          </div>
-          </router-link>
-          <router-link to="/BuscarProjetos">
-          <div class="logos">
-            <input
-              @click="teste"
-              class="form-control faculades_ind  d-inline IFCE"
-              type="Image"
-              name="IFCE"
-              :src="imageIFCE"
-            />
-          </div>
-          </router-link>
-            </div>
-            <div id="espacamento">
-          <router-link to="/BuscarProjetos">
-          <div class="logos">
-            <input
-              @click="teste"
-              class="form-control faculades_ind d-inline FPO"
-              type="Image"
-              name="FPO"
-              :src="imageFPO"
-            />
-          </div>
-          </router-link>
-          <router-link to="/BuscarProjetos">
-          <div class="logos">
-            <input
-              @click="teste"
-              class="form-control faculades_ind d-inline Unopar"
-              type="Image"
-              name="Unopar"
-              :src="imageUnopar"
-            />
-          </div>
-          </router-link>
-          <router-link to="/BuscarProjetos">
-          <div class="logos">
-            <input
-              @click="teste"
-              class="form-control faculades_ind d-inline IVA"
-              type="Image"
-              name="IVA"
-              :src="imageIVA"
-            />
-          </div>
-          </router-link>
+          <div id="espacamento">
+            <router-link to="/BuscarProjetos">
+              <div class="logos">
+                <input
+                  @click="teste"
+                  class="form-control faculades_ind d-inline FPO"
+                  type="Image"
+                  name="FPO"
+                  :src="imageFPO"
+                />
+              </div>
+            </router-link>
+            <router-link to="/BuscarProjetos">
+              <div class="logos">
+                <input
+                  @click="teste"
+                  class="form-control faculades_ind d-inline Unopar"
+                  type="Image"
+                  name="Unopar"
+                  :src="imageUnopar"
+                />
+              </div>
+            </router-link>
+            <router-link to="/BuscarProjetos">
+              <div class="logos">
+                <input
+                  @click="teste"
+                  class="form-control faculades_ind d-inline IVA"
+                  type="Image"
+                  name="IVA"
+                  :src="imageIVA"
+                />
+              </div>
+            </router-link>
           </div>
         </div>
       </div>
@@ -177,39 +181,32 @@ export default {
       imageFPO: imageFPO,
       imageUnopar: imageUnopar,
       imageIVA: imageIVA,
-      logged: false,login: "",
+      logged: false,
+      login: "",
       users: [],
       projects: [],
-      baseURI: "http://localhost:8085/BD/api/users",
+      baseURI: "http://localhost:8080/BD/api/users",
     };
   },
   mounted: function () {
-    if (localStorage.getItem("user")) {
+    if (this.$session.exists()) {
       this.logged = true;
     }
   },
   created: function () {
-      var jsonUser = localStorage.getItem('user');
-      var user = JSON.parse(jsonUser);
-      let obj = {
-        login: user.login,
-      };
-      this.$http.post(this.baseURI, obj).then((result) => {
-        this.users = result.data;
-        console.log(result.data);
-      });
-      },
-
-  methods: {
-    //Modelo de função para depois linkar
-    teste: function(){
-  
-    
-},
-logout: function () {
-      localStorage.removeItem("user");
-      location.reload();
+    if(this.$session.exists()){
+    var jsonUser = this.$session.get("user");
+    var user = JSON.parse(jsonUser);
+      this.login = user.login;
     }
+  },
+  methods: {
+    logout: function () {
+      this.$session.destroy();
+      location.reload();
+    },
+    //Modelo de função para depois linkar
+    teste: function () {},
   },
 };
 </script>
@@ -217,7 +214,6 @@ logout: function () {
 <style>
 #title {
   color: black;
-  
 }
 .logos {
   width: 30%;
@@ -259,7 +255,7 @@ h3 {
 #wrapper {
   overflow-x: hidden;
 }
-#meio{
+#meio {
   text-align: center;
 }
 
@@ -302,12 +298,12 @@ h3 {
   margin-left: -5%;
 }
 
-#espacamento{
+#espacamento {
   margin-left: 5%;
   margin-top: 6%;
 }
 
-#faixa{
+#faixa {
   /* background-color: white; */
   margin-left: 3%;
   margin-right: 3%;

@@ -1,8 +1,9 @@
 <template>
   <div id="app">
-    <!-- <div id="nav"> -->
-      <!-- <router-link to="/">Home </router-link> |
+    <div id="nav">
+      <router-link to="/">Home </router-link> |
       <router-link to="/home2"> Home2 </router-link>|
+      <router-link to="/users"> Users </router-link>|
       <router-link to="/signup">Register</router-link>
       <router-link to="/aboutproject"> | AboutProject</router-link>|
       <router-link to="/showproject">Visualizar Projeto</router-link>
@@ -11,8 +12,10 @@
       <a href="#" v-if="logged" @click="logout"> | Logout</a>
       <router-link to="/cadastrarprojeto"> | Cadastrar Projetos</router-link>
       <router-link to="/index"> | Index</router-link>
-      <button @click="teste">Clica aqui Para ver o ID do User logado no console (Deve Estar logado)</button> -->
-    <!-- </div> -->
+      <button @click="teste">
+        Clica aqui Para ver o ID do User logado no console (Deve Estar logado)
+      </button>
+    </div>
     <router-view />
   </div>
 </template>
@@ -24,20 +27,22 @@ export default {
       logged: false,
     };
   },
-  mounted: function () {
-    if (localStorage.getItem("user")) {
+  created: function () {
+    if (this.$session.exists()) {
       this.logged = true;
     }
   },
   methods: {
     logout: function () {
-      localStorage.removeItem("user");
+      this.$session.destroy();
       location.reload();
     },
     teste: function () {
-      var user = localStorage.getItem("user");
-      var obj = JSON.parse(user);
-      console.log(obj.id);
+      if (this.$session.exists()) {
+        var jsonUser = this.$session.get("user");
+        var user = JSON.parse(jsonUser);
+        console.log(user.id);
+      }
     },
   },
 };
@@ -51,7 +56,6 @@ export default {
   /* text-align: center; */
   color: #2c3e50;
 }
-
 
 ul {
   list-style-type: none;

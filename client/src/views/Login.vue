@@ -1,6 +1,6 @@
-<template >
+<template>
   <div class="teste_login">
-      <form class="form_login container" autocomplete="on">
+    <form class="form_login container" autocomplete="on">
       <div class="text-center">
         <img id="img_login" src="Imagens/imagem_login.png" alt="" />
         <h1 class="title">DivPro</h1>
@@ -29,28 +29,23 @@
         />
       </div>
       <div>
-        <div id="btn-loging" >
-            <div class="btns_login">
-              <button @click="postLogin" id="makeCad" type="submit">
-                LOGIN
-              </button>
-            </div>
-          
+        <div id="btn-loging">
+          <div class="btns_login">
+            <button @click="postLogin" id="makeCad" type="button">LOGIN</button>
+          </div>
         </div>
         <div id="btn-cadastro">
           <router-link to="/signup">
             <div class="btns_login">
-              <button onclick="" id="backLogin" type="submit">
-                CADASTRAR
-              </button>
+              <button onclick="" id="backLogin" type="button">CADASTRAR</button>
             </div>
           </router-link>
         </div>
-        <br>
+        <br />
       </div>
-   </form>
+    </form>
 
-   <!-- <br> <br> <br> <br> <br> <br> -->
+    <!-- <br> <br> <br> <br> <br> <br> -->
   </div>
 </template>
 
@@ -61,42 +56,48 @@ export default {
     return {
       login: "",
       password: "",
-      baseURI: "http://localhost:8085/BD/api/users",
+      baseURI: "http://localhost:8080/BD/api/users/login",
     };
   },
-  created: function() {
-    if(localStorage.getItem("user")) {
-        this.$router.replace("/index");
-    } 
+  created: function () {
+    if (this.$session.exists()) {
+      this.$router.replace("/index");
+    }
   },
   methods: {
-    
-    postLogin: function() {
-      if(this.login != "" && this.password != "" && this.login.length >= 6 && this.password.length >= 6){
-      let obj = {
-        login: this.login,
-        password: this.password,
-      };
-      
-      this.$http.post(this.baseURI, obj).then((result) => {
-        if (result.data != "") {
-          localStorage.setItem("user", JSON.stringify(result.data));
-          location.reload();
-        }
-      });
-      }
-      else{
-        alert("Nome usuário ou senha curtos, é necessário mais que 5 caracteres!");
+    postLogin: function () {
+      if (
+        this.login != "" &&
+        this.password != "" &&
+        this.login.length >= 6 &&
+        this.password.length >= 6
+      ) {
+        let obj = {
+          login: this.login,
+          password: this.password,
+        };
+        this.$http.post(this.baseURI, obj).then((result) => {
+          if (result.status === 200) {
+            this.$session.start();
+            this.$session.set("user", JSON.stringify(result.data));
+            location.reload();
+          }
+        })
+        .catch(function(error){
+          if(error.response.status === 401){
+            alert("Cheque o Login e o Password");
+          }
+          else{
+            alert("Não foi possível entrar");
+          }
+        });
+      } else {
+        alert(
+          "Nome usuário ou senha curtos, é necessário mais que 5 caracteres!"
+        );
       }
     },
   },
-    validaLogin: function(){
-    if(this.login != "" && this.password != ""){
-      return true
-  }
-  else
-  return false
-}
 };
 </script>
 
@@ -150,16 +151,13 @@ export default {
   border: 0px;
   margin-bottom: 2%;
 }
-
 body {
-    background-image: url(2.jpg);
-    background-repeat: repeat;
+  background-image: url(2.jpg);
+  background-repeat: repeat;
 }
-
-.teste_login{
+.teste_login {
   margin-top: 5%;
 }
-
 .text_login {
   margin-top: 2%;
   margin-bottom: 2%;

@@ -9,7 +9,8 @@
   "dependencies": {
     "axios": "^0.20.0",
     "vue": "^2.6.11",
-    "vue-router": "^3.2.0"
+    "vue-router": "^3.2.0",
+    "vue-session": "^1.0.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-router": "^4.5.6",

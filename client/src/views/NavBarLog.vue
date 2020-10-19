@@ -29,25 +29,20 @@ export default {
       login: "",
       users: [],
       projects: [],
-      baseURI: "http://localhost:8085/BD/api/users",
+      baseURI: "http://localhost:8080/BD/api/users",
     };
   },
 
   created: function () {
-      var jsonUser = localStorage.getItem('user');
+      var jsonUser = this.$session.get('user');
       var user = JSON.parse(jsonUser);
       let obj = {
         login: user.login,
       };
       this.$http.post(this.baseURI, obj).then((result) => {
         this.users = result.data;
-        console.log(result.data);
       });
   },
-  methods: {
-  
-  }
-  
 };  
 </script>
 

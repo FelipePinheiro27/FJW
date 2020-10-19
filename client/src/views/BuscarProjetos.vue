@@ -115,15 +115,15 @@ export default {
       logged: false,
       users: [],
       projects: [],
-      baseURI: "http://localhost:8085/BD/api/projects",
-      baseURI2: "http://localhost:8085/BD/api/users"
+      baseURI: "http://localhost:8080/BD/api/projects",
+      baseURI2: "http://localhost:8080/BD/api/users"
     };
   },
   created: function () {
     this.$http.get(this.baseURI).then((result) => {
       this.projects = result.data;
-      console.log(result.data);
-    });
+      console.log(result.data)
+});
 },
   mounted: function () {
     if (localStorage.getItem("user")) {
@@ -134,7 +134,6 @@ methods:{
 teste: function(){
   this.$http.get(this.baseURI2).then((result) => {
       this.users = result.data;
-      console.log(result.data);
     });
 },
 setId: function(project, URL){
@@ -142,7 +141,6 @@ setId: function(project, URL){
     var strObj = JSON.stringify(obj);
 
     localStorage.setItem("id_projeto",strObj);
-  console.log(project)
 
   window.open(URL,"janela1","width=1080, height=800,directories=no,location=no,menubar=no,scrollbars=no, status=no, toolbar=no, resizable=no")
 },

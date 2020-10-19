@@ -1,11 +1,20 @@
 package model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+
+@Entity(name="projects")
 public class Project {
+	
+		@Id
+		@GeneratedValue
+		private int id;
 		private String titulo;
 		private String descricao;
 		private String palavras_chaves;
 		private String tipo;
-		private int id;
 		private int user_id;
 		
 		
@@ -15,6 +24,19 @@ public class Project {
 					+ ", tipo=" + tipo + ", id=" + id + ", user_id=" + user_id + "]";
 		}
 		
+		public Project() {
+			
+		}
+
+		public Project(int user_id, String titulo, String descricao, String palavras_chaves, String tipo) {
+			super();
+			this.titulo = titulo;
+			this.descricao = descricao;
+			this.palavras_chaves = palavras_chaves;
+			this.tipo = tipo;
+			this.user_id = user_id;
+		}
+
 		public Project(int id, int user_id, String titulo, String descricao, String palavras_chaves, String tipo) {
 			super();
 			this.titulo = titulo;

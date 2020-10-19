@@ -53,7 +53,7 @@
       <div>
         <div id="btn-loging">
             <div class="btns_login">
-              <button @click="postRegister" id="makeCad" type="submit">
+              <button @click="postRegister" id="makeCad" type="button">
                 CADASTRAR
               </button>
             </div>
@@ -61,7 +61,7 @@
         <div id="btn-cadastro">
           <router-link to="/Login">
             <div class="btns_login">
-              <button onclick="" id="backLogin" type="submit">
+              <button onclick="" id="backLogin" type="button">
                 VOLTAR PARA LOGIN
               </button>
             </div>
@@ -83,7 +83,7 @@ export default {
       password: "",
       instituicao: "",
       curso: "",
-      baseURI: "http://localhost:8085/BD/api/users",
+      baseURI: "http://localhost:8080/BD/api/users",
     };
   },
   methods: {
@@ -96,15 +96,21 @@ export default {
         curso: this.curso,
       };
 
-      this.$http.post(this.baseURI, obj).then((result) => {
-        if (result.data != "") {
-          localStorage.setItem("user", JSON.stringify(result.data));
-          // location.reload();
-          this.$router.replace("/index");
-          location.reload();
-        }
-      
-      });
+        this.$http.post(this.baseURI, obj).then((result) => {
+          if (result.status === 200) {
+            this.$session.start();
+            this.$session.set("user", JSON.stringify(result.data));
+            location.reload();
+          }
+        })
+        .catch(function(error){
+          if(error.response.status === 401){
+            alert("Cheque o Login e o Password");
+          }
+          else{
+            alert("Não foi possível entrar");
+          }
+        });
       }
       else{
         alert("Login ou senha curtos, é necessário mais que 5 caracteres!");

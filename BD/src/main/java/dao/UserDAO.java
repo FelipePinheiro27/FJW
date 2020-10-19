@@ -1,123 +1,83 @@
 package dao;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
 import model.User;
-import util.DbUtil;
 
 public class UserDAO {
 
-	private static Connection connection = DbUtil.getConnection();
+	static EntityManagerFactory factory = Persistence.createEntityManagerFactory("DivPro");
+	static EntityManager manager;
 
 	public static User addUser(String login, String password, String curso, String instituicao) {
-		System.out.println("Entrou no addUser");
-		try {
-			PreparedStatement pStmt = connection.prepareStatement(
-					"insert into users(login, password, curso, instituicao) values (?, ?, ?, ?)",
-					Statement.RETURN_GENERATED_KEYS);
-			pStmt.setString(1, login);
-			pStmt.setString(2, password);
-			pStmt.setString(3, curso);
-			pStmt.setString(4, instituicao);
-			pStmt.executeUpdate();
+		User user = new User(login, password, curso, instituicao);
 
-			ResultSet rs = pStmt.getGeneratedKeys();
-			if (rs.next()) {
-				return new User(rs.getInt("id"), rs.getString("login"), rs.getString("password"), rs.getString("curso"),
-						rs.getString("instituicao"));
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		manager = factory.createEntityManager();
+		manager.getTransaction().begin();
+		manager.persist(user);
+		System.out.println(user);
+		manager.getTransaction().commit();
+		manager.close();
 
-		return null;
+		return user;
 	}
 
 	public static User updateUser(int id, String login, String password, String curso, String instituicao) {
-		try {
-			PreparedStatement pStmt = connection.prepareStatement(
-					"update users set login=?, password=? where id=?, curso=?, instituicao=?",
-					Statement.RETURN_GENERATED_KEYS);
-			pStmt.setString(1, login);
-			pStmt.setString(2, password);
-			pStmt.setInt(3, id);
-			pStmt.setString(4, curso);
-			pStmt.setString(5, instituicao);
-			pStmt.executeUpdate();
-			ResultSet rs = pStmt.getGeneratedKeys();
-			if (rs.next()) {
-				return new User(rs.getInt("id"), rs.getString("login"), rs.getString("password"), rs.getString("curso"),
-						rs.getString("instituicao"));
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		User user = new User(id, login, password, curso, instituicao);
 
-		return null;
+		manager = factory.createEntityManager();
+		manager.getTransaction().begin();
+		manager.merge(user);
+		manager.getTransaction().commit();
+		manager.close();
+
+		return user;
 	}
 
 	public static void deleteUser(int id) {
-		try {
-			PreparedStatement pStmt = connection.prepareStatement("delete from users where id=?");
-			pStmt.setInt(1, id);
-			pStmt.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		manager = factory.createEntityManager();
+
+		User user = manager.find(User.class, id);
+
+		manager.getTransaction().begin();
+		manager.remove(user);
+		manager.getTransaction().commit();
+		manager.close();
 	}
 
 	public static List<User> getAllUsers() {
-		List<User> users = new ArrayList<User>();
-		try {
-			Statement stmt = connection.createStatement();
-			ResultSet rs = stmt.executeQuery("select * from users order by id");
-			while (rs.next()) {
-				User user = new User(rs.getInt("id"), rs.getString("login"), rs.getString("password"),
-						rs.getString("curso"), rs.getString("instituicao"));
-				users.add(user);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		manager = factory.createEntityManager();
+		List<User> users = manager.createQuery("from users", User.class).getResultList();
+		manager.close();
 
 		return users;
 	}
 
 	public static User getUser(int id) {
-		try {
-			PreparedStatement pStmt = connection.prepareStatement("select * from users where id=?");
-			pStmt.setInt(1, id);
-			ResultSet rs = pStmt.executeQuery();
-			if (rs.next()) {
-				return new User(rs.getInt("id"), rs.getString("login"), rs.getString("password"), rs.getString("curso"),
-						rs.getString("instituicao"));
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		manager = factory.createEntityManager();
+		User user = manager.find(User.class, id);
+		manager.close();
 
-		return null;
+		return user;
 	}
 
 	public static User getUserByLogin(String login) {
-		try {
-			PreparedStatement pStmt = connection.prepareStatement("select * from users where login=?");
-			pStmt.setString(1, login);
-			ResultSet rs = pStmt.executeQuery();
-			if (rs.next()) {
-				return new User(rs.getInt("id"), rs.getString("login"), rs.getString("password"), rs.getString("curso"),
-						rs.getString("instituicao"));
+		 manager = factory.createEntityManager();
+	        User user = manager.createQuery("from users where login=?1", User.class).setParameter(1, login).getSingleResult();
+	        manager.close();
+	        return user;
+	}
+	public static User getUserByLoginAndPassword(String login, String password) {
+		List<User> list = getAllUsers();
+		for (User user : list) {
+			if (user.getLogin().equals(login) && user.getPassword().equals(password)) {
+				return user;
 			}
-		} catch (SQLException e) {
-			e.printStackTrace();
 		}
-
 		return null;
 	}
 }

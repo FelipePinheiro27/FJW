@@ -36,7 +36,6 @@ export default {
   name: "Users",
   data() {
     return {
-      logged: true,
       users: [],
       baseURI: "http://localhost:8080/projeto/api/users",
     };

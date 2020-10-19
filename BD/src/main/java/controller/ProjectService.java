@@ -15,9 +15,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import dao.ProjectDAO;
-import dao.UserDAO;
 import model.Project;
-import model.User;
+
 
 
 @WebServlet("/api/projects/*")
@@ -189,13 +188,14 @@ public class ProjectService extends HttpServlet {
 
 				Project projeto = null;
 				JSONObject jsonObject = null;
-
+				System.out.println("Até aqui da certo");
 				try {
 					// Request
 					jsonObject = new JSONObject(jb.toString());
+					System.out.println("Printando jb: " + jb );
 					projeto = ProjectDAO.updateProject(Integer.parseInt(params[1]), jsonObject.getInt("user_id"), jsonObject.getString("titulo"),
 							jsonObject.getString("descricao"),  jsonObject.getString("palavras_chaves"),  jsonObject.getString("tipo"));
-
+					
 					// Response
 					jsonObject = new JSONObject();
 					jsonObject.put("id", projeto.getId());
@@ -206,6 +206,8 @@ public class ProjectService extends HttpServlet {
 					jsonObject.put("tipo", projeto.getTipo());
 
 				} catch (JSONException e) {
+					System.out.println("Entrou no catch");
+
 				}
 
 				response.setContentType("application/json");

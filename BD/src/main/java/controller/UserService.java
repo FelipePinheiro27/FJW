@@ -107,7 +107,7 @@ public class UserService extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		System.out.println("teste");
 		StringBuffer jb = new StringBuffer();
 		String line = null;
 		try {
@@ -116,13 +116,13 @@ public class UserService extends HttpServlet {
 				jb.append(line);
 		} catch (Exception e) {
 		}
-
 		User user = null;
 		JSONObject jsonObject = new JSONObject(jb.toString());
 
 		try {
 			user = UserDAO.addUser(jsonObject.getString("login"), jsonObject.getString("password"),
 					jsonObject.getString("curso"), jsonObject.getString("instituicao"));
+			System.out.println("Printando o User Anterior --> " + user);
 
 			// Response
 			jsonObject = new JSONObject();
@@ -132,9 +132,8 @@ public class UserService extends HttpServlet {
 			jsonObject.put("curso", user.getCurso());
 			jsonObject.put("instituicao", user.getInstituicao());
 
-
 		} catch (JSONException e) {
-
+			
 		}
 
 		if (jsonObject != null) {
@@ -144,6 +143,8 @@ public class UserService extends HttpServlet {
 			response.getWriter().print(jsonObject.toString());
 			response.getWriter().flush();
 		}
+
+		//System.out.println("Testando doPost User --- O jsonObject é: " + jsonObject);
 	}
 
 	@Override
