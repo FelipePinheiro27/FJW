@@ -2,13 +2,12 @@
   <div id="app">
     <div id="nav">
       <router-link to="/">Home </router-link> |
-      <router-link to="/home2"> Home2 </router-link>|
+      <router-link to="/projects"> Projects </router-link>|
       <router-link to="/users"> Users </router-link>|
       <router-link to="/signup">Register</router-link>
       <router-link to="/aboutproject"> | AboutProject</router-link>|
       <router-link to="/showproject">Visualizar Projeto</router-link>
       <router-link v-if="logged == false" to="/login"> | Login</router-link>
-      <router-link v-if="logged" to="/users"> | Users</router-link>
       <a href="#" v-if="logged" @click="logout"> | Logout</a>
       <router-link to="/cadastrarprojeto"> | Cadastrar Projetos</router-link>
       <router-link to="/index"> | Index</router-link>

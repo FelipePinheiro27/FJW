@@ -112,30 +112,30 @@ export default {
     }
   },
   methods: {
-    handleFileUpload(id, update) {
-      this.file = this.$refs.file.files[0];
+    // handleFileUpload(id, update) {
+    //   this.file = this.$refs.file.files[0];
 
-      let obj = {
-        resource: "user",
-        id: id,
-      };
-      let json = JSON.stringify(obj);
+    //   let obj = {
+    //     resource: "user",
+    //     id: id,
+    //   };
+    //   let json = JSON.stringify(obj);
 
-      let form = new FormData();
-      form.append("obj", json);
-      form.append("file", this.file);
+    //   let form = new FormData();
+    //   form.append("obj", json);
+    //   form.append("file", this.file);
 
-      this.$http
-        .post(this.baseUploadURI, form, {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        })
-        .then((result) => {
-          console.log(result);
-        });
-      this.clearInput();
-    },
+    //   this.$http
+    //     .post(this.baseUploadURI, form, {
+    //       headers: {
+    //         "Content-Type": "multipart/form-data",
+    //       },
+    //     })
+    //     .then((result) => {
+    //       console.log(result);
+    //     });
+    //   this.clearInput();
+    // },
     postRegisterProject: function () {
       if (
         this.titulo != "" &&
@@ -156,7 +156,7 @@ export default {
         };
         this.$http.post(this.baseURI, obj).then((result) => {
           this.projects = result.data;
-          this.handleFileUpload(this.projects.id);
+          //this.handleFileUpload(this.projects.id);
           location.reload();
           alert("Projeto cadastrado!!");
         });

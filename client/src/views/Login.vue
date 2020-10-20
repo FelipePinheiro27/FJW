@@ -76,21 +76,30 @@ export default {
           login: this.login,
           password: this.password,
         };
-        this.$http.post(this.baseURI, obj).then((result) => {
-          if (result.status === 200) {
-            this.$session.start();
-            this.$session.set("user", JSON.stringify(result.data));
-            location.reload();
-          }
-        })
-        .catch(function(error){
-          if(error.response.status === 401){
-            alert("Cheque o Login e o Password");
-          }
-          else{
-            alert("Não foi possível entrar");
-          }
-        });
+        let session = {
+          login: null,
+          id: null
+        };
+
+        this.$http
+          .post(this.baseURI, obj)
+          .then((result) => {
+            if (result.status === 200) {
+              this.$session.start();
+              session.login = result.data.login;
+              session.id = result.data.id;
+              alert(result.data.password);
+              this.$session.set("user", JSON.stringify(session));
+              location.reload();
+            }
+          })
+          .catch(function (error) {
+            if (error.response.status === 401) {
+              alert("Cheque o Login e o Password");
+            } else {
+              alert("Não foi possível entrar");
+            }
+          });
       } else {
         alert(
           "Nome usuário ou senha curtos, é necessário mais que 5 caracteres!"

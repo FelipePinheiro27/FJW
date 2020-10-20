@@ -1,10 +1,6 @@
 <template>
   <div>
-    <button
-      @click="$router.push({ name: 'UserInsert' })"
-    >
-      Insert
-    </button>
+    <button @click="$router.push({ name: 'SignUp' })">Insert</button>
 
     <ul>
       <li v-for="user in users" :key="user.id">
@@ -13,6 +9,8 @@
             <h4>{{ user.id }}</h4>
             <p>{{ user.login }}</p>
             <p>{{ user.password }}</p>
+            <p>{{ user.instituicao }}</p>
+            <p>{{ user.curso }}</p>
           </div>
           <div class="right">
             <button
@@ -40,16 +38,16 @@ export default {
       baseURI: "http://localhost:8080/api/users",
     };
   },
-  created: function() {
+  created: function () {
     this.getAll();
   },
   methods: {
-    getAll: function() {
+    getAll: function () {
       this.$http.get(this.baseURI).then((result) => {
         this.users = result.data;
       });
     },
-    deleteUserById: function(id) {
+    deleteUserById: function (id) {
       this.$http.delete(this.baseURI + "/" + id).then((result) => {
         this.getAll();
       });

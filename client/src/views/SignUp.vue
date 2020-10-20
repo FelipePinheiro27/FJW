@@ -1,6 +1,6 @@
 <template>
-<div class="teste_signUp">
-       <form class="form_cadastro container" autocomplete="on">
+  <div class="teste_signUp">
+    <form class="form_cadastro container" autocomplete="on">
       <div class="text-center">
         <img id="img_login" src="Imagens/imagem_login.png" alt="" />
         <h1 class="title">DivPro</h1>
@@ -36,7 +36,6 @@
           id="instituicao"
           name="instituicao"
           placeholder="Digite sua Instituição"
-          
         />
       </div>
       <div class="card_campos">
@@ -47,16 +46,15 @@
           id="curso"
           name="curso"
           placeholder="Digite o seu Curso"
-          
         />
       </div>
       <div>
         <div id="btn-loging">
-            <div class="btns_login">
-              <button @click="postRegister" id="makeCad" type="button">
-                CADASTRAR
-              </button>
-            </div>
+          <div class="btns_login">
+            <button @click="postRegister" id="makeCad" type="button">
+              CADASTRAR
+            </button>
+          </div>
         </div>
         <div id="btn-cadastro">
           <router-link to="/Login">
@@ -68,10 +66,9 @@
           </router-link>
         </div>
       </div>
-      <br>
-     </form>
+      <br />
+    </form>
   </div>
-  
 </template>
 
 <script>
@@ -88,31 +85,41 @@ export default {
   },
   methods: {
     postRegister: function () {
-      if(this.login != "" && this.password != "" && this.login.length >= 6 && this.password.length >= 6){
-      let obj = {
-        login: this.login,
-        password: this.password,
-        instituicao: this.instituicao,
-        curso: this.curso,
-      };
+      if (
+        this.login != "" &&
+        this.password != "" &&
+        this.login.length >= 6 &&
+        this.password.length >= 6
+      ) {
+        let obj = {
+          login: this.login,
+          password: this.password,
+          instituicao: this.instituicao,
+          curso: this.curso,
+        };
+        let session = {
+          login: null,
+          id: null,
+        };
 
-        this.$http.post(this.baseURI, obj).then((result) => {
-          if (result.status === 200) {
-            this.$session.start();
-            this.$session.set("user", JSON.stringify(result.data));
-            location.reload();
-          }
-        })
-        .catch(function(error){
-          if(error.response.status === 401){
-            alert("Cheque o Login e o Password");
-          }
-          else{
-            alert("Não foi possível entrar");
-          }
-        });
-      }
-      else{
+        this.$http
+          .post(this.baseURI, obj)
+          .then((result) => {
+            if (result.status === 200) {
+              this.$session.start();
+              session.login = result.data.login;
+              session.id = result.data.id;
+              this.$session.set("user", JSON.stringify(session));
+              alert("Cadastrado com sucesso.");
+              location.reload();
+            }
+          })
+          .catch(function (error) {
+            if (error.response.status === 401) {
+              alert("Não foi possível cadastrar.");
+            }
+          });
+      } else {
         alert("Login ou senha curtos, é necessário mais que 5 caracteres!");
       }
     },
@@ -180,7 +187,7 @@ export default {
   margin-bottom: 2%;
 }
 
-.teste_signUp{
+.teste_signUp {
   margin-top: 1%;
 }
 </style>

@@ -126,7 +126,7 @@ export default {
 });
 },
   mounted: function () {
-    if (localStorage.getItem("user")) {
+    if (this.$session.exists()) {
       this.logged = true;
     }
   },

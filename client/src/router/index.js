@@ -1,7 +1,8 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
-import Home2 from "../views/Home2.vue";
+import Projects from "../views/Projects.vue";
+import ProjectEdit from "../views/ProjectEdit.vue";
 import Login from "../views/Login.vue";
 import SignUp from "../views/SignUp.vue";
 import Users from "../views/Users.vue";
@@ -43,9 +44,14 @@ const routes = [{
         component: ShowProject,
     },
     {
-        path: "/home2",
-        name: "Home2",
-        component: Home2,
+        path: "/projects",
+        name: "Projects",
+        component: Projects,
+    },
+    {
+        path: "/projectEdit",
+        name: "ProjectEdit",
+        component: ProjectEdit,
     },
     {
         path: "/login",

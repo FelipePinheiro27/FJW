@@ -11,11 +11,15 @@
           <a class="nav-link" style="color: white">Cadastrar Projeto</a>
         </router-link>
         <router-link to="/BuscarProjetos">
-        <a class="nav-link" style="color: white" href="#">Procurar Projetos</a>
+          <a class="nav-link" style="color: white" href="#"
+            >Procurar Projetos</a
+          >
         </router-link>
         <div id="first">
-          <a style="color: silver"><h6>{{users.login}}</h6></a>
-        </div> 
+          <a style="color: silver"
+            ><h6>{{ this.login }}</h6></a
+          >
+        </div>
       </div>
     </nav>
   </div>
@@ -32,18 +36,12 @@ export default {
       baseURI: "http://localhost:8080/api/users",
     };
   },
-
   created: function () {
-      var jsonUser = this.$session.get('user');
-      var user = JSON.parse(jsonUser);
-      let obj = {
-        login: user.login,
-      };
-      this.$http.post(this.baseURI, obj).then((result) => {
-        this.users = result.data;
-      });
+    var jsonUser = this.$session.get("user");
+    var user = JSON.parse(jsonUser);
+    login: user.login;
   },
-};  
+};
 </script>
 
 <style>
