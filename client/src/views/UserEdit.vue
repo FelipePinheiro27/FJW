@@ -15,7 +15,7 @@ export default {
   data: function() {
     return {
       user: {},
-      baseURI: "http://localhost:8080/projeto/api/users",
+      baseURI: "http://localhost:8080/api/users",
     };
   },
   created: function() {

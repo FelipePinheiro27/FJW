@@ -47,7 +47,7 @@ export default {
       projects: [],
       id: "",
       jsonUser: null,
-      baseURI: "http://localhost:8080/BD/api/projects",
+      baseURI: "http://localhost:8080/api/projects",
     };
   },
   created: function () {

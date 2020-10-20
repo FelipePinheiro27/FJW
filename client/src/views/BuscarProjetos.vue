@@ -115,8 +115,8 @@ export default {
       logged: false,
       users: [],
       projects: [],
-      baseURI: "http://localhost:8080/BD/api/projects",
-      baseURI2: "http://localhost:8080/BD/api/users"
+      baseURI: "http://localhost:8080/api/projects",
+      baseURI2: "http://localhost:8080/api/users"
     };
   },
   created: function () {

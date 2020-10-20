@@ -102,8 +102,8 @@ export default {
       descricao: "",
       palavras_chaves: "",
       tipo: "",
-      baseURI: "http://localhost:8080/BD/api/projects",
-      baseUploadURI: "http://localhost:8080/BD/upload",
+      baseURI: "http://localhost:8080/api/projects",
+      baseUploadURI: "http://localhost:8080/upload",
     };
   },
   mounted: function () {

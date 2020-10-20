@@ -29,7 +29,7 @@ export default {
       login: "",
       users: [],
       projects: [],
-      baseURI: "http://localhost:8080/BD/api/users",
+      baseURI: "http://localhost:8080/api/users",
     };
   },
 
