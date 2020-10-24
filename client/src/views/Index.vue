@@ -63,12 +63,16 @@
               <a href="#" class="list-group-item list-group-item-action bg-dark"
                 ><label class="navWords" for="">Eventos</label>
               </a>
-              <a href="#" class="list-group-item list-group-item-action bg-dark"
-                ><label class="navWords" for="">Perfil</label>
-              </a>
+               <router-link to="/perfil">
+                  <a href="#" class="list-group-item list-group-item-action bg-dark"
+                    ><label class="navWords" for="">Perfil</label>
+                  </a>
+              </router-link>
+              <router-link to="/projectEdit">
               <a href="#" class="list-group-item list-group-item-action bg-dark"
                 ><label class="navWords" for="">Alterar Dados da Conta</label>
               </a>
+              </router-link>
             </div>
           </div>
         </div>

@@ -9,6 +9,7 @@ import Users from "../views/Users.vue";
 import Index from "../views/Index.vue";
 import BuscarProjetos from "../views/BuscarProjetos.vue";
 import ShowProject from "../views/ShowProject.vue";
+import Perfil from "../views/Perfil.vue";
 
 
 import UserInsert from "../views/UserInsert.vue";
@@ -77,6 +78,11 @@ const routes = [{
         path: "/cadastrarprojeto",
         name: "CadastrarProjeto",
         component: CadastrarProjeto,
+    },
+    {
+        path: "/perfil",
+        name: "Perfil",
+        component: Perfil,
     },
     {
         path: "/users/edit/:id",
