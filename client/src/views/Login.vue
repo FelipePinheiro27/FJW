@@ -78,7 +78,7 @@ export default {
         };
         let session = {
           login: null,
-          id: null
+          id: null,
         };
 
         this.$http
