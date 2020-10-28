@@ -35,8 +35,8 @@ public class ProjectController {
 	}
 	
 	@RequestMapping(method = RequestMethod.GET, value = "/search")
-    public ResponseEntity<Project> getProjectByTitulo(@RequestParam("titulo") String titulo) {
-        return new ResponseEntity<Project>(projectService.getProjectByTitulo(titulo), HttpStatus.OK);
+    public ResponseEntity<List<Project>> getProjectByTitulo(@RequestParam("titulo") String titulo) {
+        return new ResponseEntity<List<Project>>(projectService.getProjectByTitulo(titulo), HttpStatus.OK);
     }
 	
 	@RequestMapping(method = RequestMethod.POST)

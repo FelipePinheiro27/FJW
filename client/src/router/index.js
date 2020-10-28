@@ -10,6 +10,15 @@ import Index from "../views/Index.vue";
 import BuscarProjetos from "../views/BuscarProjetos.vue";
 import ShowProject from "../views/ShowProject.vue";
 import Perfil from "../views/Perfil.vue";
+import BuscarProjetosUECE from "../views/BuscarProjetosUECE.vue"
+import BuscarProjetosUFC from "../views/BuscarProjetosUFC.vue"
+import BuscarProjetosIFCE from "../views/BuscarProjetosIFCE.vue"
+import BuscarProjetosFPO from "../views/BuscarProjetosFPO.vue"
+import BuscarProjetosIVA from "../views/BuscarProjetosIVA.vue"
+import BuscarProjetosUNOPAR from "../views/BuscarProjetosUNOPAR.vue"
+
+
+
 
 
 import UserInsert from "../views/UserInsert.vue";
@@ -38,6 +47,36 @@ const routes = [{
         path: "/buscarProjetos",
         name: "BuscarProjetos",
         component: BuscarProjetos
+    },
+    {
+        path: "/BuscarProjetosUECE",
+        name: "BuscarProjetosUECE",
+        component: BuscarProjetosUECE
+    },
+    {
+        path: "/BuscarProjetosUFC",
+        name: "BuscarProjetosUFC",
+        component: BuscarProjetosUFC
+    },
+    {
+        path: "/BuscarProjetosIFCE",
+        name: "BuscarProjetosIFCE",
+        component: BuscarProjetosIFCE
+    },
+    {
+        path: "/BuscarProjetosFPO",
+        name: "BuscarProjetosFPO",
+        component: BuscarProjetosFPO
+    },
+    {
+        path: "/BuscarProjetosIVA",
+        name: "BuscarProjetosIVA",
+        component: BuscarProjetosIVA
+    },
+    {
+        path: "/BuscarProjetosUNOPAR",
+        name: "BuscarProjetosUNOPAR",
+        component: BuscarProjetosUNOPAR
     },
     {
         path: "/showproject",

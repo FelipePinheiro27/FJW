@@ -34,10 +34,25 @@ public class UserController {
 		return new ResponseEntity<User>(userService.getUser(id), HttpStatus.OK);
 	}
 	
-//	@RequestMapping(method = RequestMethod.GET, value = "/search")
-//    public ResponseEntity<User> getUserByLogin(@RequestParam("login") String login) {
-//        return new ResponseEntity<User>(userService.getUserByLogin(login), HttpStatus.OK);
-//    }
+	@RequestMapping(method = RequestMethod.GET, value = "/search")
+    public ResponseEntity<List<User>> getUserByLogin(@RequestParam("login") String login) {
+        return new ResponseEntity<List<User>>(userService.getUsersByLogin(login), HttpStatus.OK);
+    }
+	
+	@RequestMapping(method = RequestMethod.GET, value = "/limit")
+    public ResponseEntity<List<User>> limite(@RequestParam("valor") int valor) {
+        return new ResponseEntity<List<User>>(userService.getUserByQuantidade(valor), HttpStatus.OK);
+	}
+	
+	@RequestMapping(method = RequestMethod.GET, value = "/ir")
+    public ResponseEntity<List<User>> getUserByCurso(@RequestParam("curso") String curso) {
+        return new ResponseEntity<List<User>>(userService.getUsersByCurso(curso), HttpStatus.OK);
+    }
+	
+	@RequestMapping(method = RequestMethod.GET, value = "/buscar")
+    public ResponseEntity<List<User>> getUsersByLoginAndCurso(@RequestParam("login") String login, @RequestParam("curso") String curso) {
+        return new ResponseEntity<List<User>>(userService.getUsersByLoginAndCurso(login,curso), HttpStatus.OK);
+    }
 	
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<User> addUser(@RequestBody User user) {			

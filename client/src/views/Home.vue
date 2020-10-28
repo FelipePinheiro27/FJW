@@ -36,8 +36,8 @@ export default {
       file: null,
       users: [],
       projects: [],
-      baseURI: "http://localhost:8080/api/users",
-      baseUploadURI: "http://localhost:8080/upload"
+      baseURI: "http://localhost:8086/api/users",
+      baseUploadURI: "http://localhost:8086/upload"
     };
   },
   created: function () {

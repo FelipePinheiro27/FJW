@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>br.ufc.web</groupId>
-	<artifactId>server</artifactId>
+	<artifactId>projetoFinal</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>server</name>
+	<name>projetoFinal</name>
 	<description>Projeto para a disciplina de WEB</description>
 
 	<properties>

@@ -2,6 +2,9 @@ package br.ufc.web.server.service;
 
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,6 +33,27 @@ public class UserService {
 	
 	public List<User> getUsers() {
 		return userRepo.findAll();
+	}
+	
+	public List<User> getUsersByLogin(String login) {
+		return userRepo.findByLogin(login);
+	}
+	
+	public List<User> getUsersByCurso(String curso) {
+		return userRepo.findByCurso(curso);
+	}
+	
+	@PersistenceContext
+	private EntityManager entityManager;
+	
+	public List<User> getUserByQuantidade(int valor) {
+		List<User> consulta = entityManager.createQuery("SELECT user FROM users user ORDER BY user.id",
+		          User.class).setMaxResults(valor).getResultList();
+		return consulta;
+	}
+	
+	public List<User> getUsersByLoginAndCurso(String login, String curso) {
+		return userRepo.findByLoginAndCurso(login, curso);
 	}
 	
 	public User getUser(Integer id) {

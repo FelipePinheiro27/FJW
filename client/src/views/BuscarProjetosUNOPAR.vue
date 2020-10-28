@@ -12,7 +12,7 @@
       <div class="top_cp">
         <br />
         <h2 class="text-center" id="logo_cp">
-          Projetos desenvolvidos nas faculdades de Crateús
+          Projetos desenvolvidos na Faculdade Integrada Norte do Paraná - UNOPAR
         </h2>
         <br>
       </div>
@@ -24,11 +24,11 @@
           <form>
               <div class="form-group">
                 <label for="#">Autor:</label>
-                <input type="text" v-model="login" class="form-control" id="autor" placeholder="Digite um nome...">
+                <input type="text" class="form-control" id="autor" placeholder="Digite um nome...">
               </div>
             <div class="form-group">
               <label for="#">Área do Projeto:</label>
-              <select class="form-control" id="area" v-model="curso">
+              <select class="form-control" id="area">
                 <option>Ciência da Computação</option>
                 <option>Matemática</option>
                 <option>Enfermagem</option>
@@ -52,7 +52,7 @@
 
           <div class="form-group">
             <label for="#" >Limitar quantidade:</label>
-            <input type="number" class="form-control" id="number" v-model="valor" placeholder="xx">
+            <input type="number" class="form-control" id="number" placeholder="XX">
           </div>
 
       <br />
@@ -61,7 +61,7 @@
           <button class="btn btn-primary" @click="teste">Consultar</button>
         </div>
         <div class="btn-limpar">
-          <button type="reset" class="btn btn-danger" @click="on-reload">Limpar</button>
+          <button type="reset" class="btn btn-danger">Limpar</button>
         </div>
       </div> 
     </div>
@@ -69,13 +69,12 @@
 <div class="container">
     <table class="table table table-bordered">
         <thead>
-          <br>
+          <br> 
           <tr class="bg-primary">
             <th >Área do Projeto</th>
             <th >Tipo do Projeto</th>
             <th>Título</th>
             <th >Autor</th>
-            <!-- <th>Like</th> -->
             
             
           </tr>
@@ -84,14 +83,12 @@
         <tbody id="tbody" v-for="projeto in projects" :key="projeto.id">
           
            <tr class="table-light" v-for="user in users" :key="user.id" >
-            <td v-if="user.id == projeto.user_id" >{{user.curso}}</td> 
-            <td v-if="user.id == projeto.user_id" >{{projeto.tipo}}</td>
-            <td v-if="user.id == projeto.user_id" >{{projeto.titulo}}</td>
-            <td v-if="user.id == projeto.user_id">{{user.login}}</td>
-              <!-- <td v-if="user.id == projeto.user_id">   <div id="img_estrela"></div></td> -->
-              <td v-if="user.id == projeto.user_id">
+            <td v-if="user.id == projeto.user_id && user.instituicao == 'UNOPAR' " >{{user.curso}}</td> 
+            <td v-if="user.id == projeto.user_id && user.instituicao == 'UNOPAR'" >{{projeto.tipo}}</td>
+            <td v-if="user.id == projeto.user_id && user.instituicao == 'UNOPAR'" >{{projeto.titulo}}</td>
+            <td v-if="user.id == projeto.user_id && user.instituicao == 'UNOPAR'">{{user.login}}</td>
+            <td v-if="user.id == projeto.user_id && user.instituicao == 'UNOPAR'">
               <div @click="setId(projeto.id , './ShowProject')" id="img_lupa"></div>
-              
               
               </td>
           </tr>
@@ -120,9 +117,6 @@ export default {
   data() {
     return {
       logged: false,
-      valor: '',
-      login: '',
-      curso: '',
       users: [],
       projects: [],
       baseURI: "http://localhost:8086/api/projects",
@@ -142,35 +136,10 @@ export default {
   },
 methods:{
 teste: function(){
-  if(this.login == '' && this.curso != ''){
-    this.fetchUserByCurso();
-    // this.filtroRegistro();
-  }
-  if(this.login != '' && this.curso == ''){
-    this.fetchUserByTitulo();
-    // this.filtroRegistro();
-  }
-  if(this.login != '' && this.curso != ''){
-    this.fetchUserByTituloAndCurso();
-    // this.filtroRegistro();
-  }
-  if(this.login == '' && this.curso == ''){
   this.$http.get(this.baseURI2).then((result) => {
       this.users = result.data;
-      this.filtroRegistro();
     });
-    }
 },
-filtroRegistro: function() {
-      this.$http
-        .get(this.baseURI2 + "/limit?valor=" + this.valor)
-        .then((result) => {
-          this.users = result.data;
-        })
-        .catch(function(error) {
-          console.log(error);
-        });
-    },
 setId: function(project, URL){
     var obj = {id_projeto: project}
     var strObj = JSON.stringify(obj);
@@ -179,39 +148,6 @@ setId: function(project, URL){
 
   window.open(URL,"janela1","width=1080, height=800,directories=no,location=no,menubar=no,scrollbars=no, status=no, toolbar=no, resizable=no")
 },
-fetchUserByCurso: function() {
-      this.$http
-        .get(this.baseURI2 + "/ir?curso=" + this.curso)
-        .then((result) => {
-          this.users = result.data;
-          console.log(this.users)
-        })
-        .catch(function(error) {
-          console.log(error);
-        });
-    },
-    fetchUserByTitulo: function() {
-      this.$http
-        .get(this.baseURI2 + "/search?login=" + this.login)
-        .then((result) => {
-          this.users = result.data;
-          console.log(this.users)
-        })
-        .catch(function(error) {
-          console.log(error);
-        });
-    },
-    fetchUserByTituloAndCurso: function() {
-      this.$http
-        .get(this.baseURI2 + "/buscar?login=" + this.login + "&&curso=" + this.curso)
-        .then((result) => {
-          this.users = result.data;
-          console.log(this.users)
-        })
-        .catch(function(error) {
-          console.log(error);
-        });
-    },
 
 },
 };
@@ -238,13 +174,6 @@ fetchUserByCurso: function() {
   background-image: url(lupa.jpg);
   width: 30px;
   height: 16px;
-  cursor: pointer;
-}
-
-#img_estrela{
-  background-image: url(estrela.png);
-  width: 20px;
-  height: 17px;
   cursor: pointer;
 }
 

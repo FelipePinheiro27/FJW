@@ -75,7 +75,7 @@ export default {
       palavras_chaves: "",
       tipo: "",
       projeto: {},
-      baseURI: "http://localhost:8080/api/projects",
+      baseURI: "http://localhost:8086/api/projects",
     };
   },
   created: function () {

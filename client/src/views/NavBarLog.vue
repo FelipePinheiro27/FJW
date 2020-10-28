@@ -33,7 +33,7 @@ export default {
       login: "",
       users: [],
       projects: [],
-      baseURI: "http://localhost:8080/api/users",
+      baseURI: "http://localhost:8086/api/users",
     };
   },
   created: function () {

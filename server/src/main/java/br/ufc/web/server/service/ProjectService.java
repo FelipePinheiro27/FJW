@@ -34,8 +34,8 @@ public class ProjectService {
 		return projectRepo.findById(id).get();
 	}
 	
-	public Project getProjectByTitulo(String titulo) {
-		return projectRepo.findFirstByTitulo(titulo);
+	public List<Project> getProjectByTitulo(String titulo) {
+		return projectRepo.findByTitulo(titulo);
 	}
 	
 	public Project updateProject(Integer id, int user_id, String titulo, String descricao, String palavras_chaves, String tipo) {

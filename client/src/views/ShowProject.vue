@@ -51,8 +51,8 @@ export default {
       id_projeto: "",
       users: [],
       projects: [],
-      baseURI: "http://localhost:8080/api/projects",
-      baseURI2: "http://localhost:8080/api/users"
+      baseURI: "http://localhost:8086/api/projects",
+      baseURI2: "http://localhost:8086/api/users"
     };
   },
     created: function () {

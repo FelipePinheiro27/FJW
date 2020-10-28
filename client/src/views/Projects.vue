@@ -29,7 +29,7 @@ export default {
     return {
       projects: [],
       jsonUser: null,
-      baseURI: "http://localhost:8080/api/projects",
+      baseURI: "http://localhost:8086/api/projects",
     };
   },
   created: function () {
