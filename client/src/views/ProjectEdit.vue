@@ -3,7 +3,8 @@
     <nav class="navbar navbar-dark bg-primary">
       <h3 id="titulo">Atualizar Dados de um Projeto</h3>
     </nav>
-    <h5>ID :</h5>
+
+    <label class="descricao" for="#">ID:</label>
     <input
       type="text"
       class="form-control"
@@ -13,7 +14,7 @@
       v-model="projeto.id"
     /><br />
 
-    <h5>Título :</h5>
+    <label class="descricao" for="#">Título :</label>
     <input
       type="text"
       class="form-control"
@@ -23,7 +24,7 @@
       v-model="projeto.titulo"
     /><br />
 
-    <h5>Descrição :</h5>
+    <label class="descricao" for="#">Descrição :</label>
     <input
       type="text"
       class="form-control"
@@ -33,7 +34,7 @@
       v-model="projeto.descricao"
     /><br />
 
-    <h5>Palavras-Chaves :</h5>
+    <label class="descricao" for="#">Palavras_Chaves:</label>
     <input
       type="text"
       class="form-control"
@@ -43,7 +44,7 @@
       v-model="projeto.palavras_chaves"
     /><br /><br />
 
-    <h5>Tipo de Projeto:</h5>
+    <label class="descricao" for="#">Tipo de Projeto :</label>
     <input
       type="text"
       class="form-control"
@@ -53,12 +54,12 @@
       v-model="projeto.tipo"
     /><br /><br />
 
-    <button type="button" class="btn butoes_cp btn-primary" @click="putProject">
+    <button type="button" id="editar" class="btn butoes_cp btn-primary" @click="putProject">
       Editar
     </button>
 
     <button type="reset" id="clear" class="btn butoes_cp btn-danger">
-            Limpar
+      Limpar
     </button>
   </div>
 </template>
@@ -118,9 +119,14 @@ export default {
 </script>
 
 <style>
-
-.btn {
- margin-left: 10%;
+#editar {
+  margin-left: 40%;
+}
+#clear {
+  margin-left: 1%;
+}
+.btn butoes_cp btn-primary {
+  margin-left: 30%;
 }
 
 .navbar {
@@ -132,5 +138,4 @@ export default {
   padding-top: 1%;
   padding-bottom: 1%;
 }
-
 </style>

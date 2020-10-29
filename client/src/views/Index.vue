@@ -51,15 +51,18 @@
                 </a>
               </router-link>
 
-              <a
-                href="#"
-                class="list-group-item list-group-item-action bg-dark"
-              >
-                <label class="navWords" for="">Meus Projetos</label>
-              </a>
-              <a href="#" class="list-group-item list-group-item-action bg-dark"
-                ><label class="navWords" for="">Favoritos</label>
-              </a>
+               <router-link to="/meusprojetos">
+                <a
+                  href="#" class="list-group-item list-group-item-action bg-dark">
+                  <label class="navWords" for="">Meus Projetos</label>
+                </a>
+              </router-link>
+
+              <router-link to="/favoritos">
+                <a href="#" class="list-group-item list-group-item-action bg-dark"
+                  ><label class="navWords" for="">Favoritos</label>
+                </a>
+              </router-link>
               <a href="#" class="list-group-item list-group-item-action bg-dark"
                 ><label class="navWords" for="">Eventos</label>
               </a>

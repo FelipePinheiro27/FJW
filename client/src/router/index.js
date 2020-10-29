@@ -7,15 +7,18 @@ import Login from "../views/Login.vue";
 import SignUp from "../views/SignUp.vue";
 import Users from "../views/Users.vue";
 import Index from "../views/Index.vue";
+import MeusProjetos from "../views/MeusProjetos"
 import BuscarProjetos from "../views/BuscarProjetos.vue";
 import ShowProject from "../views/ShowProject.vue";
 import Perfil from "../views/Perfil.vue";
+import Favoritos from "../views/Favoritos.vue";
 import BuscarProjetosUECE from "../views/BuscarProjetosUECE.vue"
 import BuscarProjetosUFC from "../views/BuscarProjetosUFC.vue"
 import BuscarProjetosIFCE from "../views/BuscarProjetosIFCE.vue"
 import BuscarProjetosFPO from "../views/BuscarProjetosFPO.vue"
 import BuscarProjetosIVA from "../views/BuscarProjetosIVA.vue"
 import BuscarProjetosUNOPAR from "../views/BuscarProjetosUNOPAR.vue"
+
 
 
 
@@ -84,6 +87,11 @@ const routes = [{
         component: ShowProject,
     },
     {
+        path: "/meusprojetos",
+        name: "Meusprojetos",
+        component: MeusProjetos,
+    },
+    {
         path: "/projects",
         name: "Projects",
         component: Projects,
@@ -122,6 +130,11 @@ const routes = [{
         path: "/perfil",
         name: "Perfil",
         component: Perfil,
+    },
+    {
+        path: "/favoritos",
+        name: "Favoritos",
+        component: Favoritos,
     },
     {
         path: "/users/edit/:id",
