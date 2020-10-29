@@ -39,7 +39,7 @@
               </select>
 
             </div>
-            <div class="form-group">
+            <!-- <div class="form-group">
               <label for="#">Tipo do Projeto:</label>
               <select class="form-control" id="tipo">
                 <option>Extensão</option>
@@ -47,7 +47,7 @@
                 <option>TCC</option>
                 <option>PIBIC</option>
               </select>
-            </div>
+            </div> -->
           </form>
 
           <div class="form-group">

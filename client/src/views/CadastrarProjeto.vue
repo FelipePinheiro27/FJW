@@ -7,7 +7,7 @@
       <NavBar />
     </div>
     <div>
-      <form class="box" action="">
+      <form class="container" action="">
         <br />
         <div class="top_cp container">
           <br />
@@ -54,9 +54,6 @@
               class="form-control"
               v-model="tipo"
             >
-              <option value="Projeto de Conclusão de Curso">
-                Projeto de Conclusão de Curso
-              </option>
               <option value="TCC">TCC</option>
               <option value="BIA">BIA</option>
               <option value="NPDS">NPDS</option>
@@ -112,30 +109,30 @@ export default {
     }
   },
   methods: {
-    // handleFileUpload(id, update) {
-    //   this.file = this.$refs.file.files[0];
+    handleFileUpload(id) {
+      this.file = this.$refs.file.files[0];
 
-    //   let obj = {
-    //     resource: "user",
-    //     id: id,
-    //   };
-    //   let json = JSON.stringify(obj);
+      let obj = {
+        resource: "project",
+        id: id,
+      };
+      let json = JSON.stringify(obj);
 
-    //   let form = new FormData();
-    //   form.append("obj", json);
-    //   form.append("file", this.file);
+      let form = new FormData();
+      form.append("obj", json);
+      form.append("file", this.file);
 
-    //   this.$http
-    //     .post(this.baseUploadURI, form, {
-    //       headers: {
-    //         "Content-Type": "multipart/form-data",
-    //       },
-    //     })
-    //     .then((result) => {
-    //       console.log(result);
-    //     });
-    //   this.clearInput();
-    // },
+      this.$http
+        .post(this.baseUploadURI, form, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        })
+        .then((result) => {
+          console.log(result);
+        });
+      this.clearInput();
+    },
     postRegisterProject: function () {
       if (
         this.titulo != "" &&
@@ -156,8 +153,9 @@ export default {
         };
         this.$http.post(this.baseURI, obj).then((result) => {
           this.projects = result.data;
-          //this.handleFileUpload(this.projects.id);
-          location.reload();
+          var valor = this.projects.id;
+          this.handleFileUpload(valor);
+          // location.reload();
           alert("Projeto cadastrado!!");
         });
       } else alert("Verifique se todos os campos estão preenchidos!!");
