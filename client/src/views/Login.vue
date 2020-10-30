@@ -95,15 +95,13 @@ export default {
           })
           .catch(function (error) {
             if (error.response.status === 401) {
-              alert("Cheque o Login e o Password");
+              alert("Cheque o Login e o Password!");
             } else {
-              alert("Não foi possível entrar");
+              alert("Não foi possivel entrar!");
             }
           });
       } else {
-        alert(
-          "Nome usuário ou senha curtos, é necessário mais que 5 caracteres!"
-        );
+        alert("Nome usuário ou senha curtos, é necessário mais que 5 caracteres!!");
       }
     },
   },
