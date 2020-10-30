@@ -51,7 +51,7 @@
                 </a>
               </router-link>
 
-               <router-link to="/meusprojetos">
+               <!-- <router-link to="/meusprojetos">
                 <a
                   href="#" class="list-group-item list-group-item-action bg-dark">
                   <label class="navWords" for="">Meus Projetos</label>
@@ -62,20 +62,20 @@
                 <a href="#" class="list-group-item list-group-item-action bg-dark"
                   ><label class="navWords" for="">Favoritos</label>
                 </a>
-              </router-link>
-              <a href="#" class="list-group-item list-group-item-action bg-dark"
+              </router-link> -->
+              <!-- <a href="#" class="list-group-item list-group-item-action bg-dark"
                 ><label class="navWords" for="">Eventos</label>
-              </a>
+              </a> -->
                <router-link to="/perfil">
                   <a href="#" class="list-group-item list-group-item-action bg-dark"
                     ><label class="navWords" for="">Perfil</label>
                   </a>
               </router-link>
-              <router-link to="/projectEdit">
+              <!-- <router-link to="/projectEdit">
               <a href="#" class="list-group-item list-group-item-action bg-dark"
                 ><label class="navWords" for="">Alterar Dados da Conta</label>
               </a>
-              </router-link>
+              </router-link> -->
             </div>
           </div>
         </div>

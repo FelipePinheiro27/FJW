@@ -88,7 +88,7 @@ export default {
               this.$session.start();
               session.login = result.data.login;
               session.id = result.data.id;
-              alert(result.data.password);
+              // alert(result.data.password);
               this.$session.set("user", JSON.stringify(session));
               location.reload();
             }

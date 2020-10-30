@@ -4,23 +4,16 @@
       <h3 id="titulo">Atualizar Dados de um Projeto</h3>
     </nav>
 
-    <label class="descricao" for="#">ID:</label>
-    <input
-      type="text"
-      class="form-control"
-      name=""
-      id=""
-      value=""
-      v-model="projeto.id"
-    /><br />
-
+    <br />
+      <div v-for="projeto in projects" :key="projeto.id" >
+        <div v-if="projeto.id == id">
     <label class="descricao" for="#">Título :</label>
     <input
       type="text"
       class="form-control"
       name=""
       id=""
-      value=""
+      value=""  
       v-model="projeto.titulo"
     /><br />
 
@@ -52,7 +45,10 @@
       id=""
       value=""
       v-model="projeto.tipo"
-    /><br /><br />
+    />
+    </div>
+    </div>
+    <br /><br />
 
     <button type="button" id="editar" class="btn butoes_cp btn-primary" @click="putProject">
       Editar
@@ -67,51 +63,58 @@
 <script>
 export default {
   name: "ProjectEdit",
-  id: 2,
   data: function () {
     return {
       id: "",
       titulo: "",
       descricao: "",
       palavras_chaves: "",
+      user_id: "",
       tipo: "",
       projeto: {},
+      projects: [],
       baseURI: "http://localhost:8086/api/projects",
     };
   },
-  created: function () {
-    this.$http
-      .get(this.baseURI + "/" + localStorage.getItem("projectId"))
-      .then((result) => {
-        this.projeto = result.data;
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-    console.log("O projeto: " + this.projeto);
-  },
+      created: function () {
+    this.$http.get(this.baseURI).then((result) => {
+      this.projects = result.data;
+            console.log(this.projects)
+    });
+    var strObj = localStorage.getItem("id_projeto");
+
+    var myObj = JSON.parse(strObj); 
+    this.id = myObj.id_projeto;
+},
   methods: {
     ///Tipo e user_id estão sendo pegos de forma estática, no PUT todos os campos devem ser passados
     ///Na hora de fazer a página de modificação nenhum campo pode fica em branco, todos devem ser preenchidos
     ///Se não está errado, e na hora da modificação dá erro.
     putProject: function () {
+      var jsonUser = this.$session.get("user");
+        var user = JSON.parse(jsonUser);
+        this.user_id = user.id;
       let obj = {
         titulo: this.titulo,
         descricao: this.descricao,
         palavras_chaves: this.palavras_chaves,
-        user_id: this.user_id,
+        tipo: this.tipo,
       };
       console.log("O user_id: " + this.user_id);
       this.$http
-        .put(this.baseURI + "/" + this.projeto.id, {
-          user_id: this.projeto.user_id,
-          titulo: this.projeto.titulo,
-          descricao: this.projeto.descricao,
-          palavras_chaves: this.projeto.palavras_chaves,
-          tipo: this.projeto.tipo,
-        })
+        .put(this.baseURI + "/" + this.id, obj
+        // {
+        //   user_id: this.projeto.user_id,
+        //   titulo: this.projeto.titulo,
+        //   descricao: this.projeto.descricao,
+        //   palavras_chaves: this.projeto.palavras_chaves,
+        //   tipo: this.projeto.tipo,
+        // }
+        )
         .then((result) => {
-          this.$router.push({ name: "Projects" });
+          // this.$router.push({ name: "Projects" });
+          this.projeto = result.data;
+          alert("Projeto atualizado!!")
         });
     },
   },
