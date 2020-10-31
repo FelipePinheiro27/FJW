@@ -10,6 +10,7 @@ import Index from "../views/Index.vue";
 import MeusProjetos from "../views/MeusProjetos"
 import BuscarProjetos from "../views/BuscarProjetos.vue";
 import ShowProject from "../views/ShowProject.vue";
+import ShowProject2 from "../views/ShowProject2.vue";
 import Perfil from "../views/Perfil.vue";
 import Favoritos from "../views/Favoritos.vue";
 import BuscarProjetosUECE from "../views/BuscarProjetosUECE.vue"
@@ -85,6 +86,11 @@ const routes = [{
         path: "/showproject",
         name: "showproject",
         component: ShowProject,
+    },
+    {
+        path: "/showproject2",
+        name: "showproject2",
+        component: ShowProject2,
     },
     {
         path: "/meusprojetos",

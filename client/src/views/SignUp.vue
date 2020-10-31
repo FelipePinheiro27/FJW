@@ -111,7 +111,8 @@ export default {
               session.id = result.data.id;
               this.$session.set("user", JSON.stringify(session));
               alert("Cadastrado com sucesso.");
-              location.reload();
+              window.location.replace("/Index");
+
             }
           })
           .catch(function (error) {

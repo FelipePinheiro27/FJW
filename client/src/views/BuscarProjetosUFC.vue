@@ -50,10 +50,10 @@
             </div> -->
           </form>
 
-          <div class="form-group">
+          <!-- <div class="form-group">
             <label for="#" >Limitar quantidade:</label>
             <input type="number" class="form-control" id="number" v-model="valor" placeholder="xx">
-          </div>
+          </div> -->
 
       <br />
       <div class="text-center">
@@ -61,7 +61,7 @@
           <button class="btn btn-primary" @click="teste">Consultar</button>
         </div>
         <div class="btn-limpar">
-          <button type="reset" class="btn btn-danger" @click="on-reload">Limpar</button>
+          <button type="reset" class="btn btn-danger" @click="reload">Limpar</button>
         </div>
       </div> 
     </div>
@@ -89,10 +89,13 @@
             <td v-if="user.id == projeto.user_id && user.instituicao == 'UFC'" >{{projeto.titulo}}</td>
             <td v-if="user.id == projeto.user_id && user.instituicao == 'UFC'">{{user.login}}</td>
               <!-- <td v-if="user.id == projeto.user_id">   <div id="img_estrela"></div></td> -->
-              <td v-if="user.id == projeto.user_id && user.instituicao == 'UFC'">
+              <td v-if="user.id == projeto.user_id">
+                <div v-if="logged == true">
               <div @click="setId(projeto.id , './ShowProject')" id="img_lupa"></div>
-              
-              
+              </div>
+              <div v-if="logged == false">
+              <div @click="setId(projeto.id , './ShowProject2')" id="img_lupa"></div>
+              </div>
               </td>
           </tr>
       
@@ -213,6 +216,9 @@ fetchUserByCurso: function() {
           console.log(error);
         });
     },
+    reload: function(){
+      location.reload();
+    }
 
 },
 };
@@ -260,5 +266,23 @@ background-image:linear-gradient( rgba(255,255,255,.8) 0%,rgba(255,255,255,.8) 1
 
 #number{
   width: 7%;
+}
+
+#favoritar{
+  float: right;
+  margin-top: 0.7%;
+  background-image: url(estrela_desmarcada.jpg);
+  width: 30px;
+  height: 31px;
+  cursor: pointer;
+}
+
+#favoritado{
+  float: right;
+  margin-top: 0.7%;
+  background-image: url(estrela_marcada.png);
+  width: 30px;
+  height: 31px;
+  cursor: pointer;
 }
 </style>

@@ -1,7 +1,8 @@
 <template>
   <div class="img_fundo">
+          <NavBarLog />
+
     <div class="container">
-      <!-- <NavBar /> -->
       <div v-for="user in users" :key="user.id">
         <div class="dados" v-if="user.id == id_user">
           <h1 id="titulo">Perfil do Usuário</h1>
@@ -17,21 +18,21 @@
           <nav class="navbar navbar-light" style="background-color: #446088">
             <b style="color: white">Instituição:</b>
           </nav>
-          <label  id="instituicao" for="#"
+          <label  id="instituicao_perfil" for="#"
             ><h4>{{ user.instituicao }}</h4>
           </label>
 
           <nav class="navbar navbar-light" style="background-color: #446088">
             <b style="color: white">Curso:</b>
           </nav>
-          <label  id="curso" for="#"> <h4>{{ user.curso }}</h4></label>
+          <label  id="curso_perfil" for="#"> <h4>{{ user.curso }}</h4></label>
 
-           <nav class="navbar navbar-light" style="background-color: #446088">
+           <!-- <nav class="navbar navbar-light" style="background-color: #446088">
             <b style="color: white">Alterar Dados da Conta:</b>
           </nav>
           <router-link to="/userEdit">
           <a  href="" id="link"><h4>Modificar Dados:</h4></a> 
-          </router-link>
+          </router-link> -->
 
 
           <nav class="navbar navbar-light" style="background-color: #446088">
@@ -75,37 +76,34 @@
             <b style="color: white">Meus Favoritos:</b>
           </nav>
           
-           <table class="table table table-bordered">
+          <div v-for="fav in favoritos" :key="fav.id">
+            <div v-if="id == fav.user_id">
+              <div v-for="projeto in projects" :key="projeto.id">
+                <div v-if="projeto.id == fav.project_id">
+           <table class="table table table-bordered" >
       <thead>
         <tr class="bg-primary">
           <th scope="col">Título</th>
           <th scope="col">Descrição</th>
           <th scope="col">Tipo</th>
-          <th scope="col">Autor</th>
+          <th></th>
         </tr>
       </thead>
-      <tbody>
-        <tr>
-          <td>############</td>
-          <td>asdasdasdasdasdasdaasdasasd</td>
-          <td>TCC</td>
-          <td>Jean Camelo</td>
-        </tr>
-        <tr>
-          <td>############</td>
-          <td>fghfghfghfghfhgfghfghfghfgh</td>
-          <td>BIA</td>
-           <td>Wallysson Lopes
-           </td>
-        </tr>
-        <tr>
-          <td>############</td>
-          <td>qweqweqweqweqweqweqweqweqwe</td>
-          <td>PIBIC</td>
-          <td>Adalberto Felipe</td>
+      <tbody >
+        <tr >
+          <td >{{projeto.titulo}}</td>
+          <td >{{projeto.descricao}}</td>
+          <td >{{projeto.tipo}}</td>
+          <td>
+              <div @click="setId(projeto.id , './ShowProject2')" id="img_lupa"></div>
+          </td>
         </tr>
       </tbody>
     </table>
+            </div>
+        </div>
+      </div>
+    </div>
   </div>
 
         </div>
@@ -115,11 +113,11 @@
 
 
 <script>
-import NavBar from "./NavBar";
+import NavBarLog from "./NavBarLog";
 
 export default {
   components: {
-    NavBar,
+    NavBarLog,
   },
   data() {
     return {
@@ -127,14 +125,20 @@ export default {
       valor: '',
       users: [],
       projects: [],
+      favoritos: [],
       baseURI: "http://localhost:8086/api/projects",
-      baseURI2: "http://localhost:8086/api/users"
+      baseURI2: "http://localhost:8086/api/users",
+      baseURI3: "http://localhost:8086/api/favoritos",
     };
   },
   created: function () {
     this.$http.get(this.baseURI2).then((result) => {
       this.users = result.data;
       console.log(this.users);
+    });
+
+    this.$http.get(this.baseURI3).then((result) => {
+      this.favoritos = result.data;
     });
 
     if (this.$session.exists()) {
@@ -145,6 +149,8 @@ export default {
     }
   },
   methods: {
+
+
     pegaValor: function(){
           this.$http.get(this.baseURI).then((result) => {
       if(this.valor == 0){
@@ -212,10 +218,10 @@ export default {
 #login {
   margin-left: 5%;
 }
-#instituicao {
+#instituicao_perfil {
   margin-left: 5%;
 }
-#curso {
+#curso_perfil  {
   margin-left: 5%;
 }
 

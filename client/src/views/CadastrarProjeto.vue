@@ -75,7 +75,7 @@
           >
             Cadastrar
           </button>
-          <button type="reset" id="limpar_cp" class="btn butoes_cp btn-danger">
+          <button type="" @click="LimpaInput" id="limpar_cp" class="btn butoes_cp btn-danger">
             Limpar
           </button>
         </div>
@@ -93,6 +93,7 @@ export default {
   data: function () {
     return {
       logged: false,
+      file: null,
       id: 0,
       user_id: "",
       titulo: "",
@@ -111,17 +112,12 @@ export default {
   methods: {
     handleFileUpload(id) {
       this.file = this.$refs.file.files[0];
-
-      let obj = {
-        resource: "project",
-        id: id,
-      };
-      let json = JSON.stringify(obj);
-
+ 
       let form = new FormData();
-      form.append("obj", json);
+      form.append("resource", "user");
+      form.append("id", id);
       form.append("file", this.file);
-
+ 
       this.$http
         .post(this.baseUploadURI, form, {
           headers: {
@@ -131,7 +127,6 @@ export default {
         .then((result) => {
           console.log(result);
         });
-      this.clearInput();
     },
     postRegisterProject: function () {
       if (
@@ -157,14 +152,16 @@ export default {
           this.handleFileUpload(valor);
           // location.reload();
           alert("Projeto cadastrado!!");
+          this.LimpaInput();
         });
       } else alert("Verifique se todos os campos estão preenchidos!!");
     },
-    clearInput: function () {
-      document.getElementById("palavrasChaves").value = "";
-      document.getElementById("descricao").value = "";
-      document.getElementById("file").value = null;
-      document.getElementById("titulo").value = "";
+    LimpaInput: function () {
+      this.palavras_chaves = ""
+      this.descricao = ""
+      this.file = null
+      this.titulo = ""
+      this.tipo = ""
     },
   },
   components: {

@@ -1,14 +1,5 @@
 <template>
   <div class="container" >
-    <div v-if="marcado == false">
-     <div  id="favoritar" @click="postRegisterProject"></div>
-     </div>
-     <div v-if="marcado == true" >
-     <div  id="favoritado">
-     </div>
-     </div>
-     <br>
-     <br>
     <div >
              
         <nav class="navbar navbar-light" style="background-color: #446088;">
@@ -58,16 +49,10 @@ export default {
   },
     data() {
     return {
-      marcado: false,
-      id_favorito: "",
-      id_projeto: "",
-      user_id: "",
-      favoritos: [],
       users: [],
       projects: [],
       baseURI: "http://localhost:8086/api/projects",
       baseURI2: "http://localhost:8086/api/users",
-      baseURI3: "http://localhost:8086/api/favoritos",
     };
   },
     created: function () {
@@ -80,10 +65,6 @@ export default {
       console.log(this.users)
     });
 
-    var jsonUser = this.$session.get("user");
-        var user = JSON.parse(jsonUser);
-        this.user_id = user.id
-
 
 
     var strObj = localStorage.getItem("id_projeto");
@@ -92,24 +73,25 @@ export default {
     this.id_projeto = myObj.id_projeto
 },
 methods:{
-      postRegisterProject: function () {
-        this.marcado = true;
-        let obj = {
-          user_id: this.user_id,
-          project_id: this.id_projeto
-        };
-        this.$http.post(this.baseURI3, obj).then((result) => {
-          this.favoritos = result.data;
-          this.id_favorito = this.favoritos.id;
-        });
-    },
-    deleteProjectById: function (resul) {
-      alert("Resul: " + resul);
-      this.$http.delete(this.baseURI3 + "/" + resul).then((result) => {
-        this.marcado = false;
-        location.reload();
-      });
-    }
+    //   postRegisterProject: function () {
+    //     this.marcado = true;
+    //     let obj = {
+    //       user_id: this.user_id,
+    //       project_id: this.id_projeto
+    //     };
+    //     this.$http.post(this.baseURI3, obj).then((result) => {
+    //       this.favoritos = result.data;
+    //       this.id_favorito = this.favoritos.id;
+    //       alert("Dentro do post: " + this.id_favorito);
+    //     });
+    // },
+    // deleteProjectById: function (resul) {
+    //   alert("Resul: " + resul);
+    //   this.$http.delete(this.baseURI3 + "/" + resul).then((result) => {
+    //     this.marcado = false;
+    //     location.reload();
+    //   });
+    // }
 }
 
 };  

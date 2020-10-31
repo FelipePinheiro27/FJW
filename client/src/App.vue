@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div id="nav">
+    <!-- <div id="nav">
       <router-link to="/">Home </router-link> |
       <router-link to="/projects"> Projects </router-link>|
       <router-link to="/users"> Users </router-link>|
@@ -14,7 +14,7 @@
       <button @click="teste">
         Clica aqui Para ver o ID do User logado no console (Deve Estar logado)
       </button>
-    </div>
+    </div> -->
     <router-view />
   </div>
 </template>
