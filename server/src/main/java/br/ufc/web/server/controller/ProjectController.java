@@ -42,12 +42,22 @@ public class ProjectController {
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<Project> addProject(@RequestBody Project Project) {			
 		//int user_id, String titulo, String descricao, String palavras_chaves, String tipo
-		return new ResponseEntity<Project>(projectService.addProject(Project.getuser_id(), Project.getTitulo(), Project.getDescricao(), Project.getpalavras_chaves(),Project.getTipo()), HttpStatus.OK);
+		if(Project.getTitulo() != "" && Project.getDescricao() != "" && Project.getpalavras_chaves() != "" && Project.getTipo() != "") {
+			return new ResponseEntity<Project>(projectService.addProject(Project.getuser_id(), Project.getTitulo(), Project.getDescricao(), Project.getpalavras_chaves(),Project.getTipo()), HttpStatus.OK);
+		}else {
+			return new ResponseEntity<Project>(HttpStatus.UNAUTHORIZED);
+		}
+	
 	}
 
 	@RequestMapping(method = RequestMethod.PUT, value = "{id}")
 	public ResponseEntity<Project> updateProject(@PathVariable("id") Integer id, @RequestBody Project Project) {
-		return new ResponseEntity<Project>(projectService.updateProject(id, Project.getuser_id(), Project.getTitulo(), Project.getDescricao(), Project.getpalavras_chaves(),Project.getTipo()), HttpStatus.OK);
+		if(Project.getTitulo() != "" && Project.getDescricao() != "" && Project.getpalavras_chaves() != "" && Project.getTipo() != "") {
+			return new ResponseEntity<Project>(projectService.updateProject(id, Project.getuser_id(), Project.getTitulo(), Project.getDescricao(), Project.getpalavras_chaves(),Project.getTipo()), HttpStatus.OK);
+		}else {
+			return new ResponseEntity<Project>(HttpStatus.UNAUTHORIZED);
+		}
+		
 	}
 
 	@RequestMapping(method = RequestMethod.DELETE, value = "{id}")

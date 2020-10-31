@@ -57,12 +57,26 @@ public class UserController {
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<User> addUser(@RequestBody User user) {			
 			//System.out.println("Login: " + user2.getLogin() + "Senha: " + user2.getPassword() + "Curso: " + user2.getCurso());
-		return new ResponseEntity<User>(userService.addUser(user.getLogin(), user.getPassword(), user.getCurso(), user.getInstituicao()), HttpStatus.OK);
+		if(user.getLogin() != "" && user.getLogin().length() >= 6 &&
+			user.getPassword() != "" && user.getPassword().length() >= 6 &&
+			user.getCurso() != "" && user.getInstituicao() != ""){
+				return new ResponseEntity<User>(userService.addUser(user.getLogin(), user.getPassword(), user.getCurso(), user.getInstituicao()), HttpStatus.OK);
+			}else {
+				return new ResponseEntity<User>(HttpStatus.UNAUTHORIZED);
+			}
+		
 	}
 
 	@RequestMapping(method = RequestMethod.PUT, value = "{id}")
 	public ResponseEntity<User> updateUser(@PathVariable("id") Integer id, @RequestBody User user) {
-		return new ResponseEntity<User>(userService.updateUser(id, user.getLogin(), user.getPassword(), user.getCurso(), user.getInstituicao()), HttpStatus.OK);
+		if(user.getLogin() != "" && user.getLogin().length() >= 6 &&
+				user.getPassword() != "" && user.getPassword().length() >= 6 &&
+				user.getCurso() != "" && user.getInstituicao() != ""){
+			return new ResponseEntity<User>(userService.updateUser(id, user.getLogin(), user.getPassword(), user.getCurso(), user.getInstituicao()), HttpStatus.OK);
+		}else {
+			return new ResponseEntity<User>(HttpStatus.UNAUTHORIZED);
+		}
+		
 	}
 
 	@RequestMapping(method = RequestMethod.DELETE, value = "{id}")
