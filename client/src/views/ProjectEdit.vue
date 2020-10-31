@@ -1,12 +1,20 @@
 <template>
   <div class="container">
-    <nav class="navbar navbar-dark bg-primary">
-      <h3 id="titulo">Atualizar Dados de um Projeto</h3>
-    </nav>
+    <div class="top_cp container" id="dar_margem">
+          <br />
+          
+          <div id="logo_ed">
+          <h2  class="text-center" >
+            Preencha os Dados Abaixo Para Atualizar seu Projeto
+          </h2>
+          
+          <br />
+          </div>
+        </div>
 
     <br />
-      <div v-for="projeto in projects" :key="projeto.id" >
-        <div v-if="projeto.id == id">
+          <form action="">
+        <div>
     <label class="descricao" for="#">Título :</label>
     <input
       type="text"
@@ -20,7 +28,7 @@
     <label class="descricao" for="#">Descrição :</label>
     <input
       type="text"
-      class="form-control"
+      class="form-control"  
       name=""
       id=""
       value=""
@@ -47,7 +55,6 @@
       v-model="projeto.tipo"
     />
     </div>
-    </div>
     <br /><br />
 
     <button type="button" id="editar" class="btn butoes_cp btn-primary" @click="putProject">
@@ -57,12 +64,14 @@
     <button type="reset" id="clear" class="btn butoes_cp btn-danger">
       Limpar
     </button>
+    </form>
   </div>
 </template>
 
 <script>
 export default {
   name: "ProjectEdit",
+
   data: function () {
     return {
       id: "",
@@ -72,19 +81,22 @@ export default {
       user_id: "",
       tipo: "",
       projeto: {},
-      projects: [],
+      // projects: [],
       baseURI: "http://localhost:8086/api/projects",
     };
   },
       created: function () {
-    this.$http.get(this.baseURI).then((result) => {
-      this.projects = result.data;
-            console.log(this.projects)
-    });
-    var strObj = localStorage.getItem("id_projeto");
+            var strObj = localStorage.getItem("id_projeto");
 
-    var myObj = JSON.parse(strObj); 
-    this.id = myObj.id_projeto;
+    // var myObj = JSON.parse(strObj); 
+    // this.id = myObj.id_projeto;
+    //   alert(localStorage.getItem(this.id))
+    this.$http.get(this.baseURI + "/" + localStorage.getItem("id_projeto")).then((result) => {
+      // alert("Dps")
+      this.projeto = result.data;
+            console.log(this.projeto)
+    });
+
 },
   methods: {
     ///Tipo e user_id estão sendo pegos de forma estática, no PUT todos os campos devem ser passados
@@ -95,21 +107,21 @@ export default {
         var user = JSON.parse(jsonUser);
         this.user_id = user.id;
       let obj = {
+        user_id: this.user_id,
         titulo: this.titulo,
         descricao: this.descricao,
         palavras_chaves: this.palavras_chaves,
         tipo: this.tipo,
       };
-      console.log("O user_id: " + this.user_id);
       this.$http
-        .put(this.baseURI + "/" + this.id, obj
-        // {
-        //   user_id: this.projeto.user_id,
-        //   titulo: this.projeto.titulo,
-        //   descricao: this.projeto.descricao,
-        //   palavras_chaves: this.projeto.palavras_chaves,
-        //   tipo: this.projeto.tipo,
-        // }
+        .put(this.baseURI + "/" + localStorage.getItem("id_projeto"), 
+        {
+          user_id: this.projeto.user_id,
+          titulo: this.projeto.titulo,
+          descricao: this.projeto.descricao,
+          palavras_chaves: this.projeto.palavras_chaves,
+          tipo: this.projeto.tipo,
+        }
         )
         .then((result) => {
           // this.$router.push({ name: "Projects" });
@@ -122,6 +134,10 @@ export default {
 </script>
 
 <style>
+#logo_ed {
+  padding-top: 1%;
+  padding-bottom: 1%;
+}
 #editar {
   margin-left: 40%;
 }
@@ -140,5 +156,9 @@ export default {
   padding-left: 30%;
   padding-top: 1%;
   padding-bottom: 1%;
+}
+
+#dar_margem{
+  margin-top: 2%;
 }
 </style>

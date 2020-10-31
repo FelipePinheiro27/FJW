@@ -18,12 +18,11 @@
         </div>
         <div class="text-left inputs_cp">
           <div class="form-group border_input_cp">
-            <label class="" for="title" id="title">Título:</label>
+            <label for="title" >Título:</label>
             <input
               type="text"
               class="form-control"
               name="titulo"
-              id="titulo"
               v-model="titulo"
             />
           </div>

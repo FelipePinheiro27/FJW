@@ -218,7 +218,6 @@ fetchUserByCurso: function() {
     reload: function(){
       location.reload();
     }
-
 },
 };
 </script>

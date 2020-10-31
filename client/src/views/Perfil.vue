@@ -40,7 +40,7 @@
           </nav>
           <div>
             <div @click="pegaValor" id="filtro"></div>
-            <input class="form-control" id="limit" v-model="valor">
+            <input class="form-control" id="limit" v-model="valor" placeholder="Qtd">
           </div>      
           <div id="container">
 
@@ -136,6 +136,14 @@ export default {
       this.users = result.data;
       console.log(this.users);
     });
+    this.$http.get(this.baseURI).then((result) => {
+        this.projects = result.data
+      var jsonUser = this.$session.get("user");
+        var user = JSON.parse(jsonUser);
+        this.nome = user.login;
+        this.id = user.id;
+          });
+
 
     this.$http.get(this.baseURI3).then((result) => {
       this.favoritos = result.data;
@@ -182,11 +190,11 @@ export default {
         });
     },
 
-    setId: function(project, URL){
-    var obj = {id_projeto: project}
-    var strObj = JSON.stringify(obj);
+    setId: function(id, URL){
+    // var obj = {id_projeto: project}
+    // var strObj = JSON.stringify(obj);
 
-    localStorage.setItem("id_projeto",strObj);
+    localStorage.setItem("id_projeto",id);
 
   window.open(URL,"janela1","width=1080, height=800,directories=no,location=no,menubar=no,scrollbars=no, status=no, toolbar=no, resizable=no")
 },
