@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.ufc.web.server.model.Project;
+import br.ufc.web.server.model.User;
 import br.ufc.web.server.service.ProjectService;
 
 @RestController
@@ -28,6 +29,12 @@ public class ProjectController {
 	public ResponseEntity<List<Project>> getProjects() {
 		return new ResponseEntity<List<Project>>(projectService.getProjects(), HttpStatus.OK);
 	}
+	
+	@RequestMapping(method = RequestMethod.GET, value = "/limit")
+    public ResponseEntity<List<Project>> limite(@RequestParam("valor") int valor) {
+        return new ResponseEntity<List<Project>>(projectService.getUserByQuantidade(valor), HttpStatus.OK);
+	}
+	
 	//Get One
 	@RequestMapping(method = RequestMethod.GET, value = "{id}")
 	public ResponseEntity<Project> getProject(@PathVariable("id") Integer id) {
@@ -39,26 +46,32 @@ public class ProjectController {
         return new ResponseEntity<List<Project>>(projectService.getProjectByTitulo(titulo), HttpStatus.OK);
     }
 	
+	
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<Project> addProject(@RequestBody Project Project) {			
 		//int user_id, String titulo, String descricao, String palavras_chaves, String tipo
-		if(Project.getTitulo() != "" && Project.getDescricao() != "" && Project.getpalavras_chaves() != "" && Project.getTipo() != "") {
-			return new ResponseEntity<Project>(projectService.addProject(Project.getuser_id(), Project.getTitulo(), Project.getDescricao(), Project.getpalavras_chaves(),Project.getTipo()), HttpStatus.OK);
-		}else {
-			return new ResponseEntity<Project>(HttpStatus.UNAUTHORIZED);
+		Project projeto2 = projectService.addProject(Project.getuser_id(), Project.getTitulo(), Project.getDescricao(), Project.getpalavras_chaves(),Project.getTipo());
+		System.out.println("project2: " + projeto2);
+		if(projeto2 != null) {
+			 return new ResponseEntity<Project>(projeto2, HttpStatus.OK);
 		}
-	
+		else {
+			return new ResponseEntity<Project>(projeto2, HttpStatus.UNAUTHORIZED);
+		}
+		
 	}
 
 	@RequestMapping(method = RequestMethod.PUT, value = "{id}")
 	public ResponseEntity<Project> updateProject(@PathVariable("id") Integer id, @RequestBody Project Project) {
-		if(Project.getTitulo() != "" && Project.getDescricao() != "" && Project.getpalavras_chaves() != "" && Project.getTipo() != "") {
-			return new ResponseEntity<Project>(projectService.updateProject(id, Project.getuser_id(), Project.getTitulo(), Project.getDescricao(), Project.getpalavras_chaves(),Project.getTipo()), HttpStatus.OK);
-		}else {
-			return new ResponseEntity<Project>(HttpStatus.UNAUTHORIZED);
+		Project projeto2 = projectService.updateProject(id,Project.getuser_id(), Project.getTitulo(), Project.getDescricao(), Project.getpalavras_chaves(),Project.getTipo());
+		System.out.println("project2: " + projeto2);
+		if(projeto2 != null) {
+			 return new ResponseEntity<Project>(projeto2, HttpStatus.OK);
 		}
-		
-	}
+		else {
+			return new ResponseEntity<Project>(projeto2, HttpStatus.UNAUTHORIZED);
+		}		
+	} 
 
 	@RequestMapping(method = RequestMethod.DELETE, value = "{id}")
 	public ResponseEntity<Void> deleteProject(@PathVariable("id") Integer id) {

@@ -20,9 +20,9 @@ public class Project {
 	public String toString() {
 		return "Project [titulo=" + titulo + ", descricao=" + descricao + ", palavras_chaves=" + palavras_chaves
 				+ ", tipo=" + tipo + ", id=" + id + ", user_id=" + user_id + "]";
-	}
+	} 
 
-	public Project() {
+	public Project() { 
 
 	}
 

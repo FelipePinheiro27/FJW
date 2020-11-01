@@ -28,6 +28,11 @@ public class UserController {
 	public ResponseEntity<List<User>> getUsers() {
 		return new ResponseEntity<List<User>>(userService.getUsers(), HttpStatus.OK);
 	}
+	
+//	@RequestMapping(method = RequestMethod.GET)
+//	public ResponseEntity<User> getUser() {
+//		return new ResponseEntity<User>(userService.getUser(), HttpStatus.OK);
+//	}
 	//Get One
 	@RequestMapping(method = RequestMethod.GET, value = "{id}")
 	public ResponseEntity<User> getUser(@PathVariable("id") Integer id) {
@@ -55,28 +60,20 @@ public class UserController {
     }
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public ResponseEntity<User> addUser(@RequestBody User user) {			
-			//System.out.println("Login: " + user2.getLogin() + "Senha: " + user2.getPassword() + "Curso: " + user2.getCurso());
-		if(user.getLogin() != "" && user.getLogin().length() >= 6 &&
-			user.getPassword() != "" && user.getPassword().length() >= 6 &&
-			user.getCurso() != "" && user.getInstituicao() != ""){
-				return new ResponseEntity<User>(userService.addUser(user.getLogin(), user.getPassword(), user.getCurso(), user.getInstituicao()), HttpStatus.OK);
-			}else {
-				return new ResponseEntity<User>(HttpStatus.UNAUTHORIZED);
+	public ResponseEntity<User> addUser(@RequestBody User user) {
+			User user2 = userService.addUser(user.getLogin(), user.getPassword(), user.getCurso(), user.getInstituicao());
+			System.out.println("user2: " + user2);
+			if(user2 != null) {
+				 return new ResponseEntity<User>(user2, HttpStatus.OK);
 			}
-		
+			else {
+				return new ResponseEntity<User>(user2, HttpStatus.UNAUTHORIZED);
+			}
 	}
 
 	@RequestMapping(method = RequestMethod.PUT, value = "{id}")
 	public ResponseEntity<User> updateUser(@PathVariable("id") Integer id, @RequestBody User user) {
-		if(user.getLogin() != "" && user.getLogin().length() >= 6 &&
-				user.getPassword() != "" && user.getPassword().length() >= 6 &&
-				user.getCurso() != "" && user.getInstituicao() != ""){
-			return new ResponseEntity<User>(userService.updateUser(id, user.getLogin(), user.getPassword(), user.getCurso(), user.getInstituicao()), HttpStatus.OK);
-		}else {
-			return new ResponseEntity<User>(HttpStatus.UNAUTHORIZED);
-		}
-		
+		return new ResponseEntity<User>(userService.updateUser(id, user.getLogin(), user.getPassword(), user.getCurso(), user.getInstituicao()), HttpStatus.OK);
 	}
 
 	@RequestMapping(method = RequestMethod.DELETE, value = "{id}")

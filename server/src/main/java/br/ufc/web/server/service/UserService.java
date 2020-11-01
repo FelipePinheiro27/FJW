@@ -18,8 +18,31 @@ public class UserService {
 	UserRepository userRepo;
 	
 	public User addUser(String login, String password, String curso, String instituicao) {
-		User user = new User(login, password, curso, instituicao);
-		return userRepo.save(user);
+		User user4 = userRepo.findFirstByLogin(login);
+		if(user4 != null) {
+		
+		
+		if(login.equals(user4.getLogin())) {
+			System.out.println(user4);
+			System.out.println("Login: " + login + "   User: " + user4.getLogin());
+			return null;
+		}
+		
+		}
+		
+		
+		
+		if(login != "" && login.length() >= 6 &&
+				password != "" && password.length() >= 6 &&
+				curso != "" && instituicao != ""){
+			User user = new User(login, password, curso, instituicao);
+			return userRepo.save(user);
+
+				}else {
+					return null;
+				}
+//		User user = new User(login, password, curso, instituicao);
+//		return userRepo.save(user);
 	}
 	
 	public boolean removeUser(Integer id) {
@@ -33,6 +56,10 @@ public class UserService {
 	
 	public List<User> getUsers() {
 		return userRepo.findAll();
+	}
+	
+	public User getUserByLogin(String login) {
+		return userRepo.findFirstByLogin(login);
 	}
 	
 	public List<User> getUsersByLogin(String login) {

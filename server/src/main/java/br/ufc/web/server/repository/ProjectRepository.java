@@ -8,5 +8,7 @@ import br.ufc.web.server.model.Project;
 
 public interface ProjectRepository extends JpaRepository<Project, Integer> {
 	List<Project> findByTitulo(String titulo);
+	Project findFirstByTitulo(String titulo);
+
 	
 }
