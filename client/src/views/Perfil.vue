@@ -27,20 +27,12 @@
           </nav>
           <label  id="curso_perfil" for="#"> <h4>{{ user.curso }}</h4></label>
 
-           <!-- <nav class="navbar navbar-light" style="background-color: #446088">
-            <b style="color: white">Alterar Dados da Conta:</b>
-          </nav>
-          <router-link to="/userEdit">
-          <a  href="" id="link"><h4>Modificar Dados:</h4></a> 
-          </router-link> -->
-
-
           <nav class="navbar navbar-light" style="background-color: #446088">
             <b style="color: white">Meus Projetos:    </b>    
           </nav>
           <div>
             <div @click="pegaValor" id="filtro"></div>
-            <input class="form-control" id="limit" v-model="valor" placeholder="Qtd">
+            <input class="form-control" id="limit" v-model="valor" >
           </div>      
           <div id="container">
 
@@ -75,10 +67,14 @@
           <nav class="navbar navbar-light" style="background-color: #446088">
             <b style="color: white">Meus Favoritos:</b>
           </nav>
+          <div>
+            <div @click="pegaValorFav" id="filtro"></div>
+            <input class="form-control" id="limit" v-model="valorFav">
+          </div>      
           
           <div v-for="fav in favoritos" :key="fav.id">
             <div v-if="id == fav.user_id">
-              <div v-for="projeto in projects" :key="projeto.id">
+              <div v-for="projeto in projectsFavoritos" :key="projeto.id">
                 <div v-if="projeto.id == fav.project_id">
            <table class="table table table-bordered" >
       <thead>
@@ -109,7 +105,7 @@
         </div>
       </div>
     </div>
-</template>
+</template> 
 
 
 <script>
@@ -123,8 +119,10 @@ export default {
     return {
       id: 0,
       valor: '',
+      valorFav:'',
       users: [],
       projects: [],
+      projectsFavoritos: [],
       favoritos: [],
       baseURI: "http://localhost:8086/api/projects",
       baseURI2: "http://localhost:8086/api/users",
@@ -178,10 +176,28 @@ export default {
         }
     });
     },
+    pegaValorFav: function(){
+          this.$http.get(this.baseURI).then((result) => {
+      if(this.valor == 0){
+      this.projectsFavoritos = result.data;
+      var jsonUser = this.$session.get("user");
+        var user = JSON.parse(jsonUser);
+        this.nome = user.login;
+        this.id = user.id;
+        }
+        if(this.valor != 0){
+      this.filtroRegistroFav();
+      var jsonUser = this.$session.get("user");
+        var user = JSON.parse(jsonUser);
+        this.nome = user.login;
+        this.id = user.id;
+        }
+    });
+    },
 
     filtroRegistro: function() {
       this.$http
-        .get(this.baseURI + "/limit?valor=" + this.valor)
+        .get(this.baseURI + "/limit?valor=" + (this.valor))
         .then((result) => {
           this.projects = result.data;
         })
@@ -190,9 +206,18 @@ export default {
         });
     },
 
+    filtroRegistroFav: function() {
+      this.$http
+        .get(this.baseURI + "/limit?valor=" + this.valorFav)
+        .then((result) => {
+          this.projectsFavoritos = result.data;
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
+    },
+
     setId: function(id, URL){
-    // var obj = {id_projeto: project}
-    // var strObj = JSON.stringify(obj);
 
     localStorage.setItem("id_projeto",id);
 

@@ -89,7 +89,7 @@
             <td v-if="user.id == projeto.user_id && user.instituicao == 'IVA'" >{{projeto.titulo}}</td>
             <td v-if="user.id == projeto.user_id && user.instituicao == 'IVA'">{{user.login}}</td>
               <!-- <td v-if="user.id == projeto.user_id">   <div id="img_estrela"></div></td> -->
-             <td v-if="user.id == projeto.user_id">
+             <td v-if="user.id == projeto.user_id && user.instituicao == 'IVA'">
                 <div v-if="logged == true">
               <div @click="setId(projeto.id , './ShowProject')" id="img_lupa"></div>
               </div>

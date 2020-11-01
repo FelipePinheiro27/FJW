@@ -85,12 +85,7 @@ export default {
   },
   methods: {
     postRegister: function () {
-      if (
-        this.login != "" &&
-        this.password != "" &&
-        this.login.length >= 6 &&
-        this.password.length >= 6
-      ) {
+      
         let obj = {
           login: this.login,
           password: this.password,
@@ -117,12 +112,23 @@ export default {
           })
           .catch(function (error) {
             if (error.response.status === 401) {
-              alert("Não foi possível cadastrar.");
+              if (
+        obj.login == "" ||
+        obj.password == "" ||
+        obj.login.length <= 5 ||
+        obj.password.length <= 5
+      ) {
+        alert("Campos de login ou password estão curtos!!");
+      }
+      else if(obj.instituicao == "" || obj.curso == "")
+      {
+        alert("Instituição ou curso estão em branco!!")
+      }
+      else{
+                   alert("Nome de usuário já existente!!");
+            }
             }
           });
-      } else {
-        alert("Login ou senha curtos, é necessário mais que 5 caracteres!");
-      }
     },
   },
 };

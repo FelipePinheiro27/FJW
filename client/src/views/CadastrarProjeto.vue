@@ -129,11 +129,7 @@ export default {
     },
     postRegisterProject: function () {
       if (
-        this.titulo != "" &&
-        this.descricao != "" &&
-        this.palavras_chaves != "" &&
-        this.tipo != ""
-        && this.$session.exists()
+        this.$session.exists()
       ) {
         var jsonUser = this.$session.get("user");
         var user = JSON.parse(jsonUser);
@@ -146,14 +142,31 @@ export default {
           tipo: this.tipo,
         };
         this.$http.post(this.baseURI, obj).then((result) => {
-          this.projects = result.data;
+          if (result.status === 200) {
+              this.projects = result.data;
           var valor = this.projects.id;
           this.handleFileUpload(valor);
           // location.reload();
           alert("Projeto cadastrado!!");
           this.LimpaInput();
-        });
-      } else alert("Verifique se todos os campos estão preenchidos!!");
+            }
+          
+        }).catch(function (error) {
+            if (error.response.status === 401) {
+              if (
+        obj.titulo == "" ||
+        obj.descricao == "" ||
+        obj.palavras_chaves == "" ||
+        obj.tipo == ""
+      ) {
+        alert("Verifique se existe algum campo vazio!!");
+      }
+      else{
+        alert("Já existe um projeto cadastrado com esse título!!")
+      }
+            }
+          });
+      }
     },
     LimpaInput: function () {
       this.palavras_chaves = ""

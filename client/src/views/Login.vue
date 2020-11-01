@@ -66,12 +66,7 @@ export default {
   },
   methods: {
     postLogin: function () {
-      if (
-        this.login != "" &&
-        this.password != "" &&
-        this.login.length >= 6 &&
-        this.password.length >= 6
-      ) {
+      
         let obj = {
           login: this.login,
           password: this.password,
@@ -94,17 +89,23 @@ export default {
             }
           })
           .catch(function (error) {
+            
             if (error.response.status === 401) {
-              alert("Cheque o Login e o Password!");
-            } else {
-              alert("Não foi possivel entrar!");
+              if (
+        obj.login == "" ||
+        obj.password == "" 
+      ) {
+              alert("Login ou Password está vazio!");
+      }
+      else {
+              alert("Não foi encontrado um usuário com essas credenciais!!");
+            } 
             }
-          });
-      } else {
-        alert("Nome usuário ou senha curtos, é necessário mais que 5 caracteres!!");
+  
+          }); 
       }
     },
-  },
+
 };
 </script>
 
